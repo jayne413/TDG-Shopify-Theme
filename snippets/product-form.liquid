@@ -234,7 +234,7 @@
                   t4s-w-100 t4s-justify-content-center 
                   {% if bk_stts.button_style == 'default' or bk_stts.button_style == 'outline' %}
                     t4s-btn-effect-{{ bk_stts.button_effect }}{% endif %} t4s-btn-loading__svg"{% unless current_variant_available %} 
-                      aria-disabled="true"{% endunless %}{% unless isProductAvailable %} disabled="disabled"{% endunless %} {% if  product.variants.first.weight == 0 or product.metafields.custom.presale_item.value == 'Expired' %}  disabled="disabled" {% endif %}> 
+                      aria-disabled="true"{% endunless %}{% unless isProductAvailable %} disabled="disabled"{% endunless %} {% if product.metafields.custom.presale_item.value == 'Expired' %}  disabled="disabled" {% endif %}> 
                   
                   {%- if bk_stts.btn_icon -%}
                     {% if  product.variants.first.weight == 0  %}   
