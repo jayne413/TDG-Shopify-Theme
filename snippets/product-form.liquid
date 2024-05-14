@@ -246,7 +246,7 @@
                     {% elsif isPreoder %}{{ 'products.product.pre_order' | t }}
                     {%- elsif product.metafields.custom.presale_item.value == 'Yes' %} Order Presale Item
                     {%- elsif product.metafields.custom.presale_item.value == 'Expired' %} Call Sales for Availability
-                    {%- elsif product.variants.first.weight == 0 %} Call 800-227-2262 for Freight Quote
+                    {%- elsif product.variants.first.weight == 0 %} Add to Cart
                     {%- else -%}{{ 'products.product.add_to_cart' | t }}
                     {%- endif -%}
                   </span>
