@@ -1,0 +1,89 @@
+/*-----------------------------------------------------------------------------/
+/ Custom Theme CSS
+/-----------------------------------------------------------------------------*/
+/*---------------- Global Custom CSS -------------------*/.j_icon--account { width: 20px; height: 20px;}
+.j_t4s-pr {display: flex;
+    align-items: flex-end;
+    column-gap: 5px;}
+
+.j_btn {
+  border: 1px solid;
+  padding: 3px 10px;
+  font-weight: 600;
+}
+
+.j_btn-clr {  
+padding: 3px 10px;
+    font-weight: 600;
+    color: #EC0101;
+    background: white; }
+
+.t4s-account-nav { background: white; color: black; }
+.t4s-account-content-inner {background: white; color: black; padding: 20px; margin-bottom: 20px;}
+.t4s-account-content-inner  h2  {color: black;}
+.t4s-account-content-inner2 {background: white; color: black; padding: 20px;}
+.t4s-account-content {color: black;}
+
+.j_with-bg { 
+    text-align: left; background: white; color: black; padding: 20px; margin-bottom: 10px;}
+.j_with-bg h2 { color: black;}
+.t4s_title_addresses { color: black; margin: 10px;}
+
+.t4s-customer {margin-top: 0;}
+.t4s-page-section-heading  {margin-bottom: 10px;} 
+li[data-address] {margin-top: 0;}
+
+.t4s-drawer { border: solid white;}
+.t4s-mini_cart__tool { background: white;  }
+
+.add-to-quote {width:100%; padding: 10px; color: white; background: none;; border: 2px solid; cursor: pointer; font-weight: 500;}
+
+.t4s-dropdown__sortby .t4s-dropdown__content button {color: black !important;}
+
+.t4s-mini_cart-tool__wrap, input#CartDiscountcode, #CartSpecialInstructions {color: black;}
+
+.four13-sub { font-size: 13px; }
+.t4s-type_mn_link .t4s-sub-column li a {
+  font-size: 14px !important;
+  padding: 5px 0 !important;
+}
+.t4s-type__drop>.t4s-sub-menu a {
+  font-size: 14px !important;
+  padding: 10px 10px !important;
+}
+
+.four13_home-collection {display: flex; flex-direction: row; flex-wrap: wrap;justify-content: center; column-gap: 20px;row-gap: 20px;}
+
+.four13_home-collection-item {flex: 0 0 23%; }
+
+.t4s-type__drop>.t4s-sub-menu { border: 1px solid #E2CD97;}
+
+.shopify-installments {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+
+#t4s-search-hidden input.t4s-mini-search__input:not([type=submit]):not([type=checkbox]) {color: black !important;}
+
+shopify-payment-terms {
+    display: none;
+}/*---------------- Custom CSS for only desktop -------------------*/
+@media (min-width: 1025px) {}
+
+/*---------------- Custom CSS for tablet, mobile -------------------*/
+@media (max-width: 1024px) {}
+
+/*---------------- Custom CSS for only tablet -------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+/*---------------- Custom CSS for only mobile -------------------*/
+@media (max-width: 767px){.four13_home-collection-item {
+    flex: auto;
+}
+
+.t4s-product .t4s-product-title { font-size: 14px;   line-height: 17px;}
+.t4s-product .t4s-product-price { font-size: 14px;   line-height: 17px;}
+
+.t4s-product__price-review .t4s-price-stock-border__true {flex-direction: column; align-items: flex-start !important;}}

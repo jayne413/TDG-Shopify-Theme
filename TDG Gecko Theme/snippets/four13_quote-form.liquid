@@ -1,0 +1,100 @@
+<!-- Product Form -->
+<button type="button" 
+        class="add-to-quote"
+        data-product-id="{{ product.id }}"
+        data-product-name="{{ product.title | replace: '"' , ' ' }}"
+        data-product-url="{{ product.url }}"
+        data-product-image="{{ product.featured_image | image_url: 'large' }}"
+        data-product-sku="{{ product.variants.first.sku }}"
+        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+        data-variant-name="{{ product.selected_or_first_available_variant.title | strip }}"
+        data-variant-price="{{ product.selected_or_first_available_variant.price | money }}"
+        data-variant-sku="{{ product.selected_or_first_available_variant.sku }}">
+  ADD TO QUOTE
+</button>
+
+<style>
+.quote-message {
+  color: green;
+    background-color: #d5ffd5;
+    border: 1px solid green;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+</style>
+
+<script>
+  document.querySelectorAll('.add-to-quote').forEach(button => {
+    button.addEventListener('click', function() {
+      const productId = this.dataset.productId;
+      const productName = this.dataset.productName;
+      const productUrl = this.dataset.productUrl;
+      const productImage = this.dataset.productImage;
+      const productSku = this.dataset.productSku; 
+      const variantId = this.dataset.variantId;
+      const variantName = this.dataset.variantName;
+      const variantPrice = this.dataset.variantPrice;
+      const variantSku = this.dataset.variantSku;
+
+      let quoteList = JSON.parse(localStorage.getItem('quoteList')) || [];
+
+      const existingVariantIndex = quoteList.findIndex(item => item.variantId === variantId);
+      if (existingVariantIndex !== -1) {
+        quoteList[existingVariantIndex].quantity += 1;
+      } else {
+        quoteList.push({
+          productId, 
+          productName, 
+          productUrl,
+          productImage,
+          productSku, 
+          variantId,
+          variantName,
+          variantPrice,
+          variantSku, 
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem('quoteList', JSON.stringify(quoteList));
+      console.log('Variant added/updated in your quote list!');
+      console.log("Captured Details:", {
+       productId, 
+          productName, 
+          productUrl,
+          productImage,
+          productSku, 
+          variantId,
+          variantName,
+          variantPrice,
+          variantSku 
+      });
+       const message = `Product has been added to your quote list. <a href="/pages/quotation-list" style="color: #31708f; text-decoration: underline;">View Quotation List</a>`;
+      showMessageBelowButton(this, message);
+    });
+  });
+
+  function showMessageBelowButton(button, message) {
+    // Remove existing message if there's any
+    const existingMessage = button.nextElementSibling;
+    if (existingMessage && existingMessage.classList.contains('quote-message')) {
+        existingMessage.remove();
+    }
+
+    // Create a new message element
+    const messageElement = document.createElement('div');
+    messageElement.className = 'quote-message'; // Add class for styling
+    messageElement.style.display = 'block'; // Make it visible
+    messageElement.innerHTML = message; // Set the HTML content
+
+    // Insert the message right after the button
+    button.parentNode.insertBefore(messageElement, button.nextSibling);
+
+    // Remove the message after 5 seconds to give users more time to act on the message
+    setTimeout(() => {
+        messageElement.remove();
+    }, 5000);
+}
+</script>

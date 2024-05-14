@@ -1,0 +1,458 @@
+<div class="four13_quote-btn">
+  <button onclick="window.print();">Print / Save as PDF</button>
+  <a href="#contact-product-list" style="border: 1px solid; padding: 5px 10px;">Send as Email</a>
+</div>
+
+<!-- Quote List Review -->
+<div id="quoteListReview"></div>
+
+<h2
+  class="four13_quote-title"
+  style="
+    text-align: center;
+    margin-bottom: 20px;
+    background: #E2CD97;
+    color:  black;
+    font-size: 50px;
+  "
+>
+  Request A Quote
+</h2>
+
+ {% form 'contact', id: 'contact-product-list', class: 'four13_quote-email', onsubmit:'return validateEmail(event);' %}
+  <div class="four13_quote-email1">
+    <!-- Name Input -->
+    <label for="ContactFormName">Name (Required)</label>
+    <input type="text" id="ContactFormName" required name="contact[name]" value="{{ customer.name }}">
+
+    <!-- Email Input -->
+    <label for="ContactFormEmail">Email (Required)</label>
+    <input type="email" id="ContactFormEmail" required name="contact[email]" value="{{ customer.email }}">
+    <div id="invalidEmailMessage" style="display: none;"></div>
+
+    <!-- Company Input -->
+    <label for="ContactFormCompany">Company (Optional)</label>
+    <input type="text" id="ContactFormCompany" name="contact[company]" value="{{ customer.default_address.company }}">
+
+    <!-- Phone Number Input -->
+    <label for="ContactFormPhone">Phone Number (Required)</label>
+    <input type="tel" id="ContactFormPhone" required name="contact[phone]" value="{{ customer.default_address.phone }}" oninput="validatePhoneNumber(this)">
+
+    <!-- Address Inputs -->
+    <div style="display: flex; flex-direction: column; margin-top: 10px;">
+      <span style="font-weight: 900;">Ship To:</span>
+      <label for="ContactFormAddress">Address (Required)</label>
+      <input type="text" id="ContactFormAddress" required name="contact[address]" value="{{ customer.default_address.address1 }}">
+      <label for="ContactFormCity">City</label>
+      <input type="text" id="ContactFormCity" required name="contact[city]" value="{{ customer.default_address.city }}">
+      <label for="ContactFormCountry">Country (Required)</label>
+      <input type="text" id="ContactFormCountry" required name="contact[country]" value="{{ customer.default_address.country }}">
+      <label for="ContactFormZip">Zip (Required)</label>
+      <input type="text" id="ContactFormZip" required name="contact[zip]" value="{{ customer.default_address.zip }}">
+
+      <div class="checkbox-wrapper">
+        <input type="checkbox" id="ContactFormResidentialAddress" name="contact[residential_address]">
+        <label for="ContactFormResidentialAddress">This is a Residential Address</label>
+        <div class="tooltip">?
+          <span class="tooltip-text">Indicating this is a residential address will help determine the best delivery method.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="four13_quote-email2">
+    <!-- Additional Inputs and Textareas for the form -->
+    <label for="ContactFormDeliveryDate">Requested Delivery Date</label>
+    <input type="date" id="ContactFormDeliveryDate" name="contact[delivery_date]" onfocus="this.showPicker()"><br>
+    
+    <!-- Checkbox Inputs -->
+    <div class="checkbox-wrapper" style="margin-bottom: 10px;">
+      <span>Do you require a Lift Gate upon delivery?</span><br>
+      <input type="checkbox" id="ContactFormRequireLift" name="contact[require_lift]">
+      <label for="ContactFormRequireLift">Yes, I require a lift gate at my location.</label>
+    </div>
+    
+    <div class="checkbox-wrapper" style="margin-bottom: 10px;">
+      <span>Are you a Reseller and need a Wholesale Account?</span><br>
+      <input type="checkbox" id="ContactFormInterested" name="contact[interested]">
+      <label for="ContactFormInterested">Yes, I am a reseller and am interested in a wholesale account.</label>
+    </div>
+    
+    <!-- Comments Section -->
+    <label for="ContactFormComment">Do you have any remarks or comments with this quote request? (Optional)</label>
+    <textarea rows="10" id="ContactFormComment" name="contact[comment]"></textarea><br>
+    
+    <!-- Hidden Message Field -->
+    <label hidden for="ContactFormMessage">Message</label>
+    <textarea hidden rows="10" id="ContactFormMessage" name="contact[body]"></textarea>
+    
+    <input type="submit" value="Send">
+    <div id="contactSuccessMessage"  style="display: none;"></div>
+  </div>
+{% endform %}
+
+<script>
+  function validatePhoneNumber(phoneInput) {
+    var pattern = /^[+]?[\d]+$/;
+    if (!pattern.test(phoneInput.value)) {
+      phoneInput.value = phoneInput.value.replace(/[^0-9+]/g, '');
+    }
+  }
+  
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const quoteListReview = document.getElementById('quoteListReview');
+
+    function renderQuoteList() {
+      const quoteList = JSON.parse(localStorage.getItem('quoteList')) || [];
+      if (quoteList.length > 0) {
+        let listHtml = quoteList
+          .map(
+            (item, index) => `
+        <li class="four13_list-item">
+          <div class="four13_item-container">
+              <a href="${item.productUrl}" class="four13_item-link">
+                  <div class="four13_quote-image">
+                      <img src="//the-decor-group-tx.myshopify.com/cdn/shop/${item.productImage}" alt="${item.productName}">
+                  </div>
+                  <div class="four13_quote-item">
+                      <p class="four13_sku">SKU: ${item.variantSku || item.productSku}</p>
+                      <h5 class="four13_product-name">${item.productName}</h5>
+                      <p class="four13_variant-name">${item.variantName}</p>
+                      <div class="four13_product-price">${item.variantPrice}</div>
+                  </div>
+              </a>
+              
+              <div class="four13_quote-qty">
+                  Quantity: <input type="number" class="four13_quantity-input" data-index="${index}" value="${item.quantity}" min="1">
+                  <button class="four13_delete-item" data-index="${index}">Delete</button>
+              </div>
+          </div>
+      </li>`
+          )
+          .join('');
+
+        quoteListReview.innerHTML = `<ul>${listHtml}</ul>`;
+        attachEventListeners();
+      } else {
+        quoteListReview.innerHTML = '<p>Your quote list is empty.</p>';
+      }
+    }
+
+    function updateQuoteListInput() {
+      const quoteList = JSON.parse(localStorage.getItem('quoteList')) || [];
+      const quoteListText = quoteList
+        .map(
+          (item) =>
+            `Product Name: ${item.productName}, Variant Name: ${item.variantName}, SKU: ${item.variantSku || item.productSku}, Quantity: ${item.quantity}, Price: ${item.variantPrice}, URL: ${
+              item.productUrl
+            }`
+        )
+        .join('\n');
+      document.getElementById('quoteListInput').value = quoteListText;
+    }
+
+    function attachEventListeners() {
+      document.querySelectorAll('.quantity-input').forEach((input) => {
+        input.addEventListener('change', function () {
+          const index = parseInt(this.dataset.index, 10);
+          const newQuantity = parseInt(this.value, 10);
+          if (newQuantity && newQuantity > 0) {
+            const quoteList = JSON.parse(localStorage.getItem('quoteList'));
+            quoteList[index].quantity = newQuantity;
+            localStorage.setItem('quoteList', JSON.stringify(quoteList));
+            renderQuoteList();
+          }
+        });
+      });
+
+      document.querySelectorAll('.four13_delete-item').forEach((button) => {
+        button.addEventListener('click', function (e) {
+          e.preventDefault();
+          const index = parseInt(this.dataset.index, 10);
+          const quoteList = JSON.parse(localStorage.getItem('quoteList'));
+          quoteList.splice(index, 1);
+          localStorage.setItem('quoteList', JSON.stringify(quoteList));
+          renderQuoteList();
+        });
+      });
+    }
+
+    renderQuoteList(); // Render the initial quote list
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const messageField = document.getElementById('ContactFormMessage');
+
+    // Function to format product list
+    const formatProductListForEmail = () => {
+      const quoteList = JSON.parse(localStorage.getItem('quoteList')) || [];
+      let productListString = 'Product List:\n\n';
+
+      quoteList.forEach((item, index) => {
+        productListString += `Product ${index + 1}: ${item.productName}\n`;
+        productListString += `SKU: ${item.variantSku || item.productSku}\n`;
+        productListString += `Quantity: ${item.quantity}\n`;
+        productListString += `Price: ${item.variantPrice}\n\n`;
+      });
+
+      return productListString;
+    };
+
+    if (messageField) {
+      messageField.value = formatProductListForEmail();
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const contactPosted = urlParams.get('contact_posted');
+
+    if (contactPosted === 'true') {
+      const successMessageElement = document.getElementById('contactSuccessMessage');
+      if (successMessageElement) {
+        successMessageElement.innerHTML =
+          "Request a quote submitted! A sales representative will contact you in 2 business days. For immediate assistance call us at (806)-722-1225 or email us at <a href='mailto:CustomerService@TheDecorGroup.com'>CustomerService@TheDecorGroup.com</a>.";
+        successMessageElement.style.display = 'block';
+      }
+    }
+  });
+</script>
+
+<style>
+  #contactSuccessMessage {
+    color: #ebc878;
+    border: 1px solid #ebc878;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  #invalidEmailMessage {
+    color: red;
+    border: 1px solid red;
+    padding: 5px;
+    margin-top: 5px;
+  }
+  .four13_quote-email {
+    display: flex;
+    justify-content: center;
+    column-gap: 20px;
+    flex-direction: row;
+  }
+  .four13_quote-email1 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  .four13_quote-email2 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+  }
+  .four13_quote-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 20px;
+    margin-bottom: 20px;
+  }
+  .quantity-input {
+    width: 100px;
+  }
+  input,
+  textarea {
+    background: white;
+    color: black;
+  }
+  .four13_quote-image {
+    width: 20%;
+  }
+  .four13_quote-item {
+    width: 50%;
+  }
+  .four13_quote-qty {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+  .delete-item {
+    margin-left: 10px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .four13_quote-list {
+    display: flex;
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-bottom: 20px;
+    border: 1px solid;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  /* Tooltip styling */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want to mark the tooltip trigger with a dot */
+  }
+
+  .tooltip .tooltip-text {
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 12px;
+
+    /* Position the tooltip text */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -110px; /* Use half of the width (220px/2) to center the tooltip */
+
+    /* Fade in tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .tooltip:hover .tooltip-text,
+  .tooltip:focus .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  @media print {
+    /* Hide elements not needed in the print version */
+    header,
+    #shopify-section-top-bar,
+    button,
+    .t4s_nt_se_footer,
+    .four13_quote-title,
+    .four13_quote-btn,
+    .four13_quote-email {
+      display: none;
+    }
+    .four13_quote-item {
+      font-size: 12px;
+      color: black;
+    }
+    .four13_quote-qty {
+      font-size: 10px;
+      color: black;
+    }
+    h3 {
+      font-size: 13px;
+      color: black;
+    }
+    input {
+      border: none;
+    }
+
+    /* Additional print styles */
+  }
+
+  @media (max-width: 767px) {
+    .four13_item-container {
+      flex-direction: column;
+      align-items: stretch !important;
+    }
+    .four13_product-name {
+      font-size: 15px;
+      line-height: 16px;
+    }
+    .four13_quote-image {
+      width: 30%;
+    }
+    .four13_quote-title {
+      font-size: 20px !important;
+    }
+    .four13_quote-email1 {
+      width: 100%;
+    }
+    .four13_quote-email2 {
+      width: 100%;
+    }
+    .four13_quote-email {
+      flex-direction: column;
+    }
+  }
+
+  .four13_list-item {
+    border: solid 1px;
+    margin-bottom: 10px;
+    list-style-type: none;
+  }
+
+  .four13_item-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .four13_item-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    flex-grow: 1;
+  }
+
+  .four13_quote-image,
+  .four13_quote-qty {
+    flex-shrink: 0;
+  }
+
+  .four13_quote-image img {
+    width: 200px;
+    height: auto;
+  }
+
+  .four13_quote-item {
+    flex-grow: 1;
+    padding-left: 20px;
+  }
+
+  .four13_sku,
+  .four13_product-name,
+  .four13_variant-name {
+    margin-bottom: 5px;
+  }
+
+  .four13_sku,
+  .four13_variant-name {
+    font-size: 12px;
+  }
+
+  .four13_product-name {
+    color: var(--secondary-color);
+  }
+
+  .four13_product-price {
+    /* Additional styling for price, if needed */
+  }
+
+  .four13_quantity-input {
+    margin-left: 5px;
+    width: 60px;
+  }
+
+  .four13_delete-item {
+    margin-left: 10px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+</style>

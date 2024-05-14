@@ -1,0 +1,21 @@
+HEY!
+{%- assign customer_access_level = '' -%}
+{%- for tag in customer.tags -%}
+  {%- if tag contains 'access_level:' -%}
+    {%- assign customer_access_level = tag | split: ':' | last -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- for collection in collections -%}
+  {%- assign collection_access_level = collection.metafields.custom.access_level | default: '' -%}
+  
+  {%- if collection_access_level == customer_access_level or collection_access_level == '' -%}
+    <div class="collection-item">
+      <a href="{{ collection.url }}">
+        <img src="{{ collection.image | image_url }}" alt="{{ collection.title }}" width=300 height=300>
+        <h2>{{ collection.title }}</h2>
+      </a>
+    </div>
+  {%- endif -%}
+{%- endfor -%}
