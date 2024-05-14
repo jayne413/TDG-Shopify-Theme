@@ -408,7 +408,7 @@ t4option0_0 | alt text
                            
                             <span data-preorder-status class="{{ classdn2 }}">{{ 'products.product.pre_oder_status' | t }}</span>
                           </span>
-                          <span data-soldout-status class="t4s-product-available__false t4s-soldout-status{% if isProductAvailable %} t4s-dn{% endif %}">{{ 'products.product.sold_out_status' | t }}</span>
+                          <span data-soldout-status class="t4s-product-available__false t4s-soldout-status{% if isProductAvailable %} t4s-dn{% endif %}">{% comment %}{{ 'products.product.sold_out_status' | t }}{% endcomment %}</span>
                         {%- endif -%}    
                       </div>
                     </div>
