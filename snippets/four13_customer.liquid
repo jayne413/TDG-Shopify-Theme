@@ -2,7 +2,7 @@
 
     <a
       class="t4s-pr j_t4s-pr"
-      href="https://shopify.com/62948114532/account">
+      href="{{ routes.account_login_url }}">
       {% unless customer or request.page_type contains 'customers' %}
         Login to your Account
       {% endunless %}
@@ -15,10 +15,10 @@
 
     <ul class="t4s-my-account">
       <li>
-        <a class="t4s-d-block" href="https://shopify.com/62948114532/account/orders">{{ 'customer.account.dashboard' | t }}</a>
+        <a class="t4s-d-block" href="{{ routes.account_url }}">{{ 'customer.account.dashboard' | t }}</a>
       </li>
       <li>
-        <a class="t4s-d-block" href="https://shopify.com/62948114532/account/profile">{{ 'customer.menu.addresses' | t }}</a>
+        <a class="t4s-d-block" href="{{ routes.account_addresses_url }}">{{ 'customer.menu.addresses' | t }}</a>
       </li>
       <li>
         <a class="t4s-d-block" href="{{ routes.account_logout_url }}" data-no-instant>
