@@ -151,7 +151,8 @@
         ".t4s-tab__text {color: black;}",
         ".t4s-product-tabs-wrapper {border: 1px solid #ebc878;}",
         ".t4s-product-form__buttons {margin-top: 20px;}",
-        "span {color: white; font-family: var(--font-family-2) !important;}"
+        "span {color: white; font-family: var(--font-family-2) !important;}",
+        "table {border: 1px solid var(--border-color) !important;}"
       ],
       "settings": {
         "pr_layout": "default",
