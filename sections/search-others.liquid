@@ -3,6 +3,21 @@
    assign limit = 5 
  -%}
 
+ 
+{% if customer %}
+  {% assign wholesale = false %}
+  {% assign retail = false %}
+  {% for tag in customer.tags %}
+    {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
+      {% assign wholesale = true %}
+    {% else %}
+      {% assign retail = true %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% assign retail = true %}
+{% endif %}
+
 {%- if results_count > 0 -%}
    <style>
       .t4s-result-title {
