@@ -463,7 +463,7 @@ t4option0_0 | alt text
                   {%- endcapture -%}
 
                   <div class="t4s-product__description t4s-rte" {{ block.shopify_attributes }}>
-                   {%- if bk_stts.des == '1' -%}{{- pr_des -}}
+                   {%- if bk_stts.des == '1' -%}{{- pr_des | strip_html -}}
                    {%- elsif description_excerpt != blank -%}{{- description_excerpt -}}{{ readm }}
                    {%- else -%}<p>{{- pr_des | strip_html | truncatewords: bk_stts.length -}}{{ readm }}</p>
                    {%- endif -%}
