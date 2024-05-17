@@ -241,7 +241,6 @@
             {%- if show_search_suggest and collection != blank -%}
               <div class="t4s-search-suggest">
                 <div class="t4s-search-suggest-title">{{ 'search.general.suggest' | t }}</div>
-                {% if retail %} RETAIL! {% endif %}
                 <div data-collection-url="{{ collection.url }}" data-contentlm-replace class="t4s_box_pr_grid t4-suggest-products t4s-products t4s-justify-content-center t4s_{{ image_ratio }} t4s_position_{{ se_stts.image_position }} t4s_{{ se_stts.image_size }} t4s-row t4s-row-cols-lg-2 t4s-row-cols-md-2 t4s-row-cols-1 t4s-gx-md-0 t4s-gy-md-0 t4s-gx-0 t4s-gy-0">
                   {%- for product in collection.products limit: 6 -%}
                     {% if retail %}
