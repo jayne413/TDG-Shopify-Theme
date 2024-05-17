@@ -29,15 +29,17 @@
     endif
  -%}
  {% if customer %}
+  {% assign wholesale = false %}
+  {% assign retail = false %}
   {% for tag in customer.tags %}
     {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
-      {% assign wholesale = "true" %}
+      {% assign wholesale = true %}
     {% else %}
-      {% assign retail = "true" %}
+      {% assign retail = true %}
     {% endif %}
   {% endfor %}
 {% else %}
-   {% assign retail = "true" %}
+   {% assign retail = true %}
 {% endif %}
 
 {%- if request.design_mode %}<link rel="stylesheet" href="{{ 't4s-search-hidden.css' | asset_url }}" media="all">{% endif -%}
@@ -88,7 +90,7 @@
   {%- endif -%}
 </form>
 
-{%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }} {% if retail == "true" %} Retail {% endif %} {% if wholesale %}</div>  Wholesale {% endif %}
+{%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }} {% if retail == true %} Retail {% endif %} {% if wholesale %} Wholesale {% endif %}</div> 
 {%- elsif results_count == 1 or  results_count == 0 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.one' | t }}</div>
 {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.suggest' | t }}</div>
 {%- else -%}<div data-title-search class="t4s-mini-search__title" style="display:none"></div>
