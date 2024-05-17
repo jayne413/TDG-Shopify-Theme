@@ -38,6 +38,8 @@
       {% assign retail = true %}
     {% endif %}
   {% endfor %}
+{% else %}
+   {% assign retail = true %}
 {% endif %}
 
 {%- if request.design_mode %}<link rel="stylesheet" href="{{ 't4s-search-hidden.css' | asset_url }}" media="all">{% endif -%}
