@@ -49,6 +49,17 @@
    <button class="t4s-drawer__close" data-drawer-close aria-label="{{ 'search.general.close_search' | t }}"><svg class="t4s-iconsvg-close" role="presentation" viewBox="0 0 16 14"><path d="M15 0L1 14m14 0L1 0" stroke="currentColor" fill="none" fill-rule="evenodd"></path></svg></button>
 </div>
 <form data-frm-search action="{{ routes.search_url }}" method="get" class="t4s-mini-search__frm t4s-pr" role="search">
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var searchForm = document.querySelector('.t4s-mini-search__frm'); // Adjust the class if necessary to target your form
+    searchForm.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent form submission
+        return false; // Stop the event from propagating further
+      }
+    });
+  });
+</script>
    <input type="hidden" name="type" value="product">
    <input type="hidden" name="options[unavailable_products]" value="{{ settings.unavailable_prs }}">
    <input type="hidden" name="options[prefix]" value="last">
