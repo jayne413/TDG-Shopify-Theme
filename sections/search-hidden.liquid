@@ -93,6 +93,8 @@
   {% assign wholesale = false %}
 {% endif %}
 {% assign r_prod = product.metafields.custom.for_retail_customers %}
+{% assign w_prod = product.metafields.custom.for_wholesale_customer %}
+
 
 {%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }}</div>
 {%- elsif results_count == 1 or  results_count == 0 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.one' | t }}</div>
