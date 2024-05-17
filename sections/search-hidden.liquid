@@ -29,8 +29,6 @@
     endif
  -%}
  {% if customer %}
-  {% assign wholesale = "false" %}
-  {% assign retail = "false" %}
   {% for tag in customer.tags %}
     {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
       {% assign wholesale = "true" %}
