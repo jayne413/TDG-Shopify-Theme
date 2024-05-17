@@ -158,8 +158,7 @@
                  </div>
              </div>
 
-           <style>  .t4s-mini-search__content.t4s_ratioadapt {display: flex; flex-wrap: wrap;  justify-content: center; column-gap: 20px; }</style>
-             <div data-results-search class="t4s-row t4s-row-cols-2 t4s-justify-content-center t4s-gx-lg-30 t4s-gy-lg-30 t4s-gx-md-20 t4s-gy-md-20 t4s-gx-10 t4s-gy-20 t4s-mini-search__content t4s_ratioadapt">
+             <div data-results-search class="t4s-row t4s-row-cols-2 t4s-justify-content-center t4s-gx-lg-30 t4s-gy-lg-30 t4s-gx-md-20 t4s-gy-md-20 t4s-gx-10 t4s-gy-20 t4s-mini-search__content t4s_ratioadapt" style="display: flex; flex-wrap: wrap;  justify-content: center; column-gap: 20px;">
                  {%- if results_count == 0 -%}<div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
                  {%- elsif results_count > 0 -%}
                      {%- for product in search.results limit: limit -%}
