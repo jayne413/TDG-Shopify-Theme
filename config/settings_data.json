@@ -2310,24 +2310,17 @@
       "four13_header-inline-public": {
         "type": "four13_header-inline-public",
         "blocks": {
-          "four13_header-inline-public-0": {
-            "type": "mega",
+          "base_JyPh7X": {
+            "type": "base",
             "settings": {
               "title": "Home",
-              "url": "https:\/\/store.thedecorgroup.com\/",
+              "url": "\/",
               "open_link": "_self",
               "icon": "",
               "cus_cl": false,
               "cl": "#ec0101",
               "lb": "",
-              "lb_cl": "#00badb",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 1200,
-              "id": 1,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
+              "lb_cl": ""
             }
           },
           "drop_P3aYHx": {
@@ -2417,7 +2410,7 @@
           }
         },
         "block_order": [
-          "four13_header-inline-public-0",
+          "base_JyPh7X",
           "drop_P3aYHx",
           "drop_RYYiCH",
           "drop_dV664H",
