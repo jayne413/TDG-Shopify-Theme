@@ -232,55 +232,70 @@
             {%- endfor -%}
           </div>
         </div>
-       <div
-        data-results-search
-        class="t4s-row t4s-row-cols-2 t4s-justify-content-center t4s-gx-lg-30 t4s-gy-lg-30 t4s-gx-md-20 t4s-gy-md-20 t4s-gx-10 t4s-gy-20 t4s-mini-search__content t4s_ratioadapt"
-      >
-        {%- if results_count == 0 -%}
-          <div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
-        {%- elsif results_count > 0 -%}
-          {% if retail %}
-            {%- for product in search.results limit: limit -%}
-              {% assign r_prod = product.metafields.custom.for_retail_customers %}
-              {% if r_prod %}
-                {%- render 'pr-search-fullwidth-loop',
-                  imgatt: '',
-                  product: product,
-                  pr_url: product.url,
-                  placeholder_img: placeholder_img,
-                  price_varies_style: price_varies_style
-                -%}
-              {% endif %}
-            {%- endfor -%}
-          {% elsif wholesale %}
-            {%- for product in search.results limit: limit -%}
-              {%- render 'pr-search-fullwidth-loop',
-                imgatt: '',
-                product: product,
-                pr_url: product.url,
-                placeholder_img: placeholder_img,
-                price_varies_style: price_varies_style
-              -%}
-            {%- endfor -%}
-          {% endif %}
-        {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}
-          {%- for product in collection.products limit: limit -%}
-            {%- render 'pr-search-fullwidth-loop',
-              imgatt: '',
-              product: product,
-              pr_url: product.url,
-              placeholder_img: placeholder_img,
-              price_varies_style: price_varies_style
-            -%}
-          {%- endfor -%}
-        {%- endif -%}
-        {%- unless settings.only_search_prs %}
-          <div
-            class="t4s-results-others t4s_ratioadapt lazyloadt4s"
-            data-rendert4s="{{ routes.search_url }}?q={{ search.terms | url_encode }}&type=article,page&section_id=search-others"
-          ></div>
-        {% endunless -%}
-      </div>
+        <div
+          data-results-search
+          class="t4s-row t4s-row-cols-2 t4s-justify-content-center t4s-gx-lg-30 t4s-gy-lg-30 t4s-gx-md-20 t4s-gy-md-20 t4s-gx-10 t4s-gy-20 t4s-mini-search__content t4s_ratioadapt"
+        >
+          {%- if results_count == 0 -%}
+            <div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
+          {%- elsif results_count > 0 -%}
+            {% if retail %}
+              {%- for product in search.results limit: limit -%}
+                {% assign r_prod = product.metafields.custom.for_retail_customers %}
+                {% if r_prod %}
+                  {%- render 'pr-search-fullwidth-loop',
+                    imgatt: '',
+                    product: product,
+                    pr_url: product.url,
+                    placeholder_img: placeholder_img,
+                    price_varies_style: price_varies_style
+                  -%}
+                {% endif %}
+              {%- endfor -%}
+            {% elsif wholesale %}
+              {%- for product in search.results limit: limit -%}
+                  {%- render 'pr-sidebar-loop',
+                    imgatt: '',
+                    product: product,
+                    pr_url: product.url,
+                    placeholder_img: placeholder_img,
+                    price_varies_style: price_varies_style
+                  -%}
+                {%- endfor -%}
+            {% endif %}
+          {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}
+            {% if retail %}
+              {%- for product in search.results limit: limit -%}
+                {% assign r_prod = product.metafields.custom.for_retail_customers %}
+                {% if r_prod %}
+                  {%- render 'pr-search-fullwidth-loop',
+                    imgatt: '',
+                    product: product,
+                    pr_url: product.url,
+                    placeholder_img: placeholder_img,
+                    price_varies_style: price_varies_style
+                  -%}
+                {% endif %}
+              {%- endfor -%}
+            {% elsif wholesale %}
+              {%- for product in search.results limit: limit -%}
+                  {%- render 'pr-sidebar-loop',
+                    imgatt: '',
+                    product: product,
+                    pr_url: product.url,
+                    placeholder_img: placeholder_img,
+                    price_varies_style: price_varies_style
+                  -%}
+                {%- endfor -%}
+            {% endif %}
+          {%- endif -%}
+          {%- unless settings.only_search_prs %}
+            <div
+              class="t4s-results-others t4s_ratioadapt lazyloadt4s"
+              data-rendert4s="{{ routes.search_url }}?q={{ search.terms | url_encode }}&type=article,page&section_id=search-others"
+            ></div>
+          {% endunless -%}
+        </div>
       {%- endif -%}
     </div>
   </div>
