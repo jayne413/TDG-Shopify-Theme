@@ -90,13 +90,13 @@
   {%- endif -%}
 </form>
 
-{%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }}</div>
+{%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }}</div> {% if retail %} Retail {% endif %} {% if wholesale %} Wholesale {% endif %}
 {%- elsif results_count == 1 or  results_count == 0 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.one' | t }}</div>
 {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.suggest' | t }}</div>
 {%- else -%}<div data-title-search class="t4s-mini-search__title" style="display:none"></div>
 {%- endif -%}
-{% if retail %} Retail {% endif %}
-{% if wholesale %} Wholesale {% endif %}
+
+
 <div class="t4s-drawer__content">
    <div class="t4s-drawer__main">
       <div data-t4s-scroll-me class="t4s-drawer__scroll t4s-current-scrollbar t4s-pr-search__wrap">
