@@ -220,31 +220,30 @@
   <div class="t4s-row">
     <div data-ntajax-container{% if show_filter %} data-has-filters{% endif %} data-ntajax-options='{"id":"{{ sid }}","type":"{{ typeAjax }}","typeFilters":"facets","isProduct":true,"updateURL":true,"updateURLPrev":true,"sort_by":"{{ search.sort_by | default: search.default_sort_by }}"}' class="t4s-col-item t4s-col-12 t4s-main-area t4s-main-collection-search t4s-justify-content-center">
     	{%- if results_count <= 0 -%}
-        {%- if search_terms == blank -%}
-          {%- render 'search_form' -%}
-          {%- if show_search_suggest and collection != blank -%}
-            <div class="t4s-search-suggest">
-              <div class="t4s-search-suggest-title">{{ 'search.general.suggest' | t }}</div>
-              <div data-collection-url="{{ collection.url }}" data-contentlm-replace class="t4s_box_pr_grid t4-suggest-products t4s-products t4s-justify-content-center t4s_{{ image_ratio }} t4s_position_{{ se_stts.image_position }} t4s_{{ se_stts.image_size }} t4s-row t4s-row-cols-lg-2 t4s-row-cols-md-2 t4s-row-cols-1 t4s-gx-md-0 t4s-gy-md-0 t4s-gx-0 t4s-gy-0">
-                {%- for product in collection.products limit: 6 -%}
-                  {%- render 'product-group-item', product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, use_link_vendor: use_link_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false -%}
-                {%- endfor -%}
+          {%- if search_terms == blank -%}
+            {%- render 'search_form' -%}
+            {%- if show_search_suggest and collection != blank -%}
+              <div class="t4s-search-suggest">
+                <div class="t4s-search-suggest-title">{{ 'search.general.suggest' | t }}</div>
+                <div data-collection-url="{{ collection.url }}" data-contentlm-replace class="t4s_box_pr_grid t4-suggest-products t4s-products t4s-justify-content-center t4s_{{ image_ratio }} t4s_position_{{ se_stts.image_position }} t4s_{{ se_stts.image_size }} t4s-row t4s-row-cols-lg-2 t4s-row-cols-md-2 t4s-row-cols-1 t4s-gx-md-0 t4s-gy-md-0 t4s-gx-0 t4s-gy-0">
+                  {%- for product in collection.products limit: 6 -%}
+                    {%- render 'product-group-item', product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, use_link_vendor: use_link_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false -%}
+                  {%- endfor -%}
+                </div>
+                <div class="t4s-search-suggest-bottom t4s-text-center">
+                  <a class="t4s-viewall-btn" href="{{ collection.url }}">{{ 'search.pagination.view_all' | t }} <svg class="t4s-btn-icon" viewBox="0 0 14 10"><use xlink:href="#t4s-icon-btn"></use></svg></a>
+                </div>
               </div>
-              <div class="t4s-search-suggest-bottom t4s-text-center">
-                <a class="t4s-viewall-btn" href="{{ collection.url }}">{{ 'search.pagination.view_all' | t }} <svg class="t4s-btn-icon" viewBox="0 0 14 10"><use xlink:href="#t4s-icon-btn"></use></svg></a>
+            {%- endif -%}
+          {%- else -%}
+            <div class="t4s-coll-empty t4s-text-center">
+              <svg class="t4s-icon t4s-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg>
+              <div class="t4s-no-result-product t4s-d-flex t4s-align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"></path></svg>{{ 'search.general.no_product_results' | t }}
               </div>
             </div>
-          {%- endif -%}
-        {%- else -%}
-          <div class="t4s-coll-empty t4s-text-center">
-            <svg class="t4s-icon t4s-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg>
-            <div class="t4s-no-result-product t4s-d-flex t4s-align-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="18" height="18"><path d="M506.3 417l-213.3-364c-16.33-28-57.54-28-73.98 0l-213.2 364C-10.59 444.9 9.849 480 42.74 480h426.6C502.1 480 522.6 445 506.3 417zM232 168c0-13.25 10.75-24 24-24S280 154.8 280 168v128c0 13.25-10.75 24-23.1 24S232 309.3 232 296V168zM256 416c-17.36 0-31.44-14.08-31.44-31.44c0-17.36 14.07-31.44 31.44-31.44s31.44 14.08 31.44 31.44C287.4 401.9 273.4 416 256 416z"></path></svg>{{ 'search.general.no_product_results' | t }}
-            </div>
-          </div>
-        {% endif %}
+          {% endif %}
       {%- else -%}
-       
          {%- assign total_active_values = 0 -%}
          {%- capture filters__active -%}
               <div class="t4s-active-filters__count t4s-d-inline-block">{{ 'products.facets.results_with_count_html' | t: count: results_count }}</div>
