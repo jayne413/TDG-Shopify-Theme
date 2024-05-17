@@ -115,12 +115,13 @@
                      {%- for product in search.results limit: limit -%}
                        {% assign r_prod = product.metafields.custom.for_retail_customers.value %}
                        {% if retail == true %} RETAIL
-                         {% if r_prod == true %} R_PROD WORKING
+                         {% if r_prod == true %}
                            {%- render 'pr-sidebar-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
                          {% endif %} 
-                       {% endif %} 
-                         R_PROD NOT WORKING
+                        {% elsif wholesale == true %}
+                         WHOLESALE
                          {%- render 'pr-sidebar-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
+                       {% endif %} 
                      {%- endfor -%}
 
                  {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}
