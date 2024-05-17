@@ -114,7 +114,6 @@
              {%- elsif results_count > 0 -%}
                      {%- for product in search.results limit: limit -%}
                        {% assign r_prod = product.metafields.custom.for_retail_customers.value %}
-                       {% if r_prod == true %} R_PROD {% endif %}
                        {% if retail == true %} RETAIL
                          {% if r_prod == true %} R_PROD WORKING
                            {%- render 'pr-sidebar-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
