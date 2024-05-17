@@ -90,7 +90,7 @@
     "filter_type_search": false,
     "only_search_prs": true,
     "search_types": "sidebar_hidden",
-    "unavailable_prs": "hide",
+    "unavailable_prs": "show",
     "show_search_suggest": false,
     "search_prs_suggest": "clothing",
     "show_search_hotkey": false,
