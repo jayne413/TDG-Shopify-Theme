@@ -2312,10 +2312,9 @@
         "blocks": {
           "four13_header-inline-public-0": {
             "type": "mega",
-            "disabled": true,
             "settings": {
-              "title": "Sale",
-              "url": "",
+              "title": "Home",
+              "url": "https:\/\/store.thedecorgroup.com\/",
               "open_link": "_self",
               "icon": "",
               "cus_cl": false,
