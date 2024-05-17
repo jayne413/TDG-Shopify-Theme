@@ -28,6 +28,18 @@
         assign limit = 16 
     endif
  -%}
+ {% if customer %}
+  {% assign wholesale = false %}
+  {% assign retail = false %}
+  {% for tag in customer.tags %}
+    {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
+      {% assign wholesale = true %}
+    {% else %}
+      {% assign retail = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 {%- if request.design_mode %}<link rel="stylesheet" href="{{ 't4s-search-hidden.css' | asset_url }}" media="all">{% endif -%}
 <link rel="stylesheet" href="{{ 't4s-collection-products.css' | asset_url }}" media="all">
 <div class="t4s-drawer__header">
@@ -75,6 +87,7 @@
       </div>
   {%- endif -%}
 </form>
+
 {%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }}</div>
 {%- elsif results_count == 1 or  results_count == 0 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.one' | t }}</div>
 {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.suggest' | t }}</div>
