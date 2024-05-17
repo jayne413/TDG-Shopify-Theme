@@ -41,7 +41,6 @@
 {% else %}
    {% assign retail = true %}
 {% endif %}
-{% assign r_prod = product.metafields.custom.for_retail_customers.value %}
 
 {%- if request.design_mode %}<link rel="stylesheet" href="{{ 't4s-search-hidden.css' | asset_url }}" media="all">{% endif -%}
 <link rel="stylesheet" href="{{ 't4s-collection-products.css' | asset_url }}" media="all">
@@ -114,6 +113,7 @@
              {%- if results_count == 0 -%}{{ 'search.general.no_product_results' | t }}
              {%- elsif results_count > 0 -%}
                      {%- for product in search.results limit: limit -%}
+                       {% assign r_prod = product.metafields.custom.for_retail_customers.value %}
                        {% if r_prod == true %} R_PROD {% endif %}
                        {% if retail == true %} RETAIL
                          {% if r_prod == true %} R_PROD WORKING
