@@ -217,6 +217,18 @@
     {%- if show_filter and style_filters == 'area' %}<div class="t4s-filter-area" data-filter-area></div>{% endif -%}
   {%- endif -%}
 
+
+  {% if customer %}
+    {% assign wholesale = false %}
+    {% assign retail = false %}
+    {% for tag in customer.tags %}
+        {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
+            {% assign wholesale = true %}
+        {% else %}
+            {% assign retail = true %}
+        {% endif %}
+    {% endfor %}
+  {% endif %}
   <div class="t4s-row">
     <div data-ntajax-container{% if show_filter %} data-has-filters{% endif %} data-ntajax-options='{"id":"{{ sid }}","type":"{{ typeAjax }}","typeFilters":"facets","isProduct":true,"updateURL":true,"updateURLPrev":true,"sort_by":"{{ search.sort_by | default: search.default_sort_by }}"}' class="t4s-col-item t4s-col-12 t4s-main-area t4s-main-collection-search t4s-justify-content-center">
     	{%- if results_count <= 0 -%}
@@ -227,6 +239,10 @@
                 <div class="t4s-search-suggest-title">{{ 'search.general.suggest' | t }}</div>
                 <div data-collection-url="{{ collection.url }}" data-contentlm-replace class="t4s_box_pr_grid t4-suggest-products t4s-products t4s-justify-content-center t4s_{{ image_ratio }} t4s_position_{{ se_stts.image_position }} t4s_{{ se_stts.image_size }} t4s-row t4s-row-cols-lg-2 t4s-row-cols-md-2 t4s-row-cols-1 t4s-gx-md-0 t4s-gy-md-0 t4s-gx-0 t4s-gy-0">
                   {%- for product in collection.products limit: 6 -%}
+                    {% if wholesale or product.metafields.custom.for_retail_customers %} 
+                      {%- render 'product-group-item', product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, use_link_vendor: use_link_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false -%}
+                   {% endif %}
+
                     {%- render 'product-group-item', product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, use_link_vendor: use_link_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false -%}
                   {%- endfor -%}
                 </div>
