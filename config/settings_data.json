@@ -523,6 +523,19 @@
       "header-inline": {
         "type": "header-inline",
         "blocks": {
+          "base_8FCBNT": {
+            "type": "base",
+            "settings": {
+              "title": "Home",
+              "url": "https:\/\/store.thedecorgroup.com\/",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": ""
+            }
+          },
           "drop_hYk6qL": {
             "type": "drop",
             "settings": {
@@ -602,6 +615,7 @@
           }
         },
         "block_order": [
+          "base_8FCBNT",
           "drop_hYk6qL",
           "mega_TrB4e7",
           "base_97LznC",
