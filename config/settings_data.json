@@ -89,7 +89,7 @@
     "return_login": "\/",
     "filter_type_search": false,
     "only_search_prs": true,
-    "search_types": "fullwidth",
+    "search_types": "sidebar_hidden",
     "unavailable_prs": "hide",
     "show_search_suggest": false,
     "search_prs_suggest": "clothing",
