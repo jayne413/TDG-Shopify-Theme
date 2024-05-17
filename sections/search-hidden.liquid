@@ -43,6 +43,9 @@
 {% endif %}
 {% assign r_prod = product.metafields.custom.for_retail_customers.value %}
 
+<script>
+  console.log({{product.metafields.custom.for_retail_customers | json }})
+</script>
 {%- if request.design_mode %}<link rel="stylesheet" href="{{ 't4s-search-hidden.css' | asset_url }}" media="all">{% endif -%}
 <link rel="stylesheet" href="{{ 't4s-collection-products.css' | asset_url }}" media="all">
 <div class="t4s-drawer__header">
