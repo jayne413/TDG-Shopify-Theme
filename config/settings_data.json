@@ -523,23 +523,6 @@
       "header-inline": {
         "type": "header-inline",
         "blocks": {
-          "drop_h7wefP": {
-            "type": "drop",
-            "settings": {
-              "title": "Bargains",
-              "url": "shopify:\/\/collections\/bargains",
-              "open_link": "_self",
-              "menu": "wholesale-bargains",
-              "icon": "",
-              "cus_cl": true,
-              "cl": "",
-              "lb": "",
-              "lb_cl": "",
-              "lazy_mn": true,
-              "pos_sub": "bottom",
-              "pos": "left"
-            }
-          },
           "drop_hYk6qL": {
             "type": "drop",
             "settings": {
@@ -619,7 +602,6 @@
           }
         },
         "block_order": [
-          "drop_h7wefP",
           "drop_hYk6qL",
           "mega_TrB4e7",
           "base_97LznC",
