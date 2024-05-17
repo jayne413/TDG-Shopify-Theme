@@ -115,8 +115,8 @@
              {%- elsif results_count > 0 -%}
                 {% if retail == true %} Retail {% endif %} 
                      {%- for product in search.results limit: limit -%}
-                       {% if retail == true %}
-                         {% if r_prod == true %}
+                       {% if retail == true %} RETAIL
+                         {% if r_prod == true %} R_PROD
                            {%- render 'pr-sidebar-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
                          {% endif %} 
                        {% endif %} 
