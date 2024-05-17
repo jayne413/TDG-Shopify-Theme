@@ -2325,6 +2325,7 @@
           },
           "drop_P3aYHx": {
             "type": "drop",
+            "disabled": true,
             "settings": {
               "title": "FDS",
               "url": "shopify:\/\/collections\/fds-retail",
