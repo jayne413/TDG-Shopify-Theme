@@ -239,33 +239,26 @@
           {%- if results_count == 0 -%}
             <div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
           {%- elsif results_count > 0 -%}
-            {% if retail %}
-              {%- for product in search.results limit: limit -%}
-                {% assign r_prod = product.metafields.custom.for_retail_customers %}
-                {% if r_prod %}
-                {%- render 'pr-search-fullwidth-loop',
-                  imgatt: '',
-                  product: product,
-                  pr_url: product.url,
-                  placeholder_img: placeholder_img,
-                  price_varies_style: price_varies_style
-                -%}
-                {% endif %}
-              {%- endfor -%}
+            {%- for product in search.results limit: limit -%}
+              {%- render 'pr-search-fullwidth-loop',
+                imgatt: '',
+                product: product,
+                pr_url: product.url,
+                placeholder_img: placeholder_img,
+                price_varies_style: price_varies_style
+              -%}
+            {%- endfor -%}
 
-            {% elsif wholesale %}
-  
-            {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}
-              {%- for product in collection.products limit: limit -%}
-                {%- render 'pr-search-fullwidth-loop',
-                  imgatt: '',
-                  product: product,
-                  pr_url: product.url,
-                  placeholder_img: placeholder_img,
-                  price_varies_style: price_varies_style
-                -%}
-              {%- endfor -%}
-            {%- endif -%}
+          {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}
+            {%- for product in collection.products limit: limit -%}
+              {%- render 'pr-search-fullwidth-loop',
+                imgatt: '',
+                product: product,
+                pr_url: product.url,
+                placeholder_img: placeholder_img,
+                price_varies_style: price_varies_style
+              -%}
+            {%- endfor -%}
           {%- endif -%}
           {%- unless settings.only_search_prs %}
             <div
