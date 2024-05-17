@@ -82,13 +82,17 @@
   {% for tag in customer.tags %}
     {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
       {% assign wholesale = true %}
+      {% assign retail = false %}
     {% else %}
       {% assign retail = true %}
+      {% assign wholesale = false %}
     {% endif %}
   {% endfor %}
 {% else %}
   {% assign retail = true %}
+  {% assign wholesale = false %}
 {% endif %}
+{% assign r_prod = product.metafields.custom.for_retail_customers %}
 
 {%- if results_count > 1 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.other' | t }}</div>
 {%- elsif results_count == 1 or  results_count == 0 -%}<div data-title-search class="t4s-mini-search__title">{{ 'search.general.heading.one' | t }}</div>
@@ -110,9 +114,17 @@
              <div data-results-search class="t4s-mini-search__content t4s_ratioadapt">
              {%- if results_count == 0 -%}{{ 'search.general.no_product_results' | t }}
              {%- elsif results_count > 0 -%}
+                 {% if retail == true %}
+                   {% if r_prod == true %}
                      {%- for product in search.results limit: limit -%}
                          {%- render 'pr-sidebar-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
                      {%- endfor -%}
+                   {% endif %}
+                 {% elsif wholesale == true %}
+                   {%- for product in search.results limit: limit -%}
+                         {%- render 'pr-sidebar-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
+                     {%- endfor -%}
+                 {% endif %}
 
                  {%- elsif predictive_search == blank and collection != blank and show_search_suggest -%}
                      {%- for product in collection.products limit: limit -%}
