@@ -1134,6 +1134,16 @@
               "menu": "decor-smart-rgb",
               "col": "3"
             }
+          },
+          "link_mHiTgq": {
+            "type": "link",
+            "settings": {
+              "tt_hd": "Bargains",
+              "url": "shopify:\/\/collections\/bargains",
+              "open_link": "_self",
+              "menu": "wholesale-bargains",
+              "col": "3"
+            }
           }
         },
         "block_order": [
@@ -1144,7 +1154,8 @@
           "link_nYL8nB",
           "link_kpg9q7",
           "link_MNhCeL",
-          "link_mHiTgw"
+          "link_mHiTgw",
+          "link_mHiTgq"
         ],
         "custom_css": [
 
