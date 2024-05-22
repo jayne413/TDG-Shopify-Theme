@@ -158,23 +158,24 @@
              </div>
 
              <div data-results-search class="t4s-row t4s-row-cols-2 t4s-justify-content-center t4s-gx-lg-30 t4s-gy-lg-30 t4s-gx-md-20 t4s-gy-md-20 t4s-gx-10 t4s-gy-20 t4s-mini-search__content t4s_ratioadapt" style="display: flex; flex-wrap: wrap;  justify-content: center; column-gap: 20px;">
-                 {%- if results_count == 0 -%}<div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
-                 {%- elsif results_count > 0 -%}
-                     {%- for product in search.results limit: limit -%}
-                       {% assign counter = 0 %}
-                       {%- if results_count == 0 -%}<div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div> {% endif %}
-                       {% assign r_prod = product.metafields.custom.for_retail_customers.value %}
-                       {% if retail == true %} 
-                         {% if r_prod == true %}
-                           {%- assign counter = counter | plus: 1 -%}
-                           {% if counter == 0 %} <div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div> {% endif %}
-                           {%- render 'pr-search-fullwidth-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
-                         {% endif %} 
-                       {% elsif wholesale == true %}
-                           {%- render 'pr-search-fullwidth-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%} 
-                       {% endif %} 
-                     {%- endfor -%}
-                 {%- endif -%}
+                 {%- if results_count == 0 -%}
+                    <div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
+                  {%- elsif results_count > 0 -%}
+                    {% assign found_products = false %}
+                    {%- for product in search.results limit: limit -%}
+                      {% assign r_prod = product.metafields.custom.for_retail_customers.value %}
+                      {% if retail == true and r_prod == true %}
+                        {%- assign found_products = true -%}
+                        {%- render 'pr-search-fullwidth-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%}
+                      {% elsif wholesale == true %}
+                        {%- assign found_products = true -%}
+                        {%- render 'pr-search-fullwidth-loop', imgatt: "", product: product, pr_url: product.url, placeholder_img: placeholder_img, price_varies_style: price_varies_style -%}
+                      {% endif %}
+                    {%- endfor -%}
+                    {%- if found_products == false -%}
+                      <div class="t4s-search-no-results">{{ 'search.general.no_product_results' | t }}</div>
+                    {%- endif -%}
+                  {%- endif -%}
                  {%- unless settings.only_search_prs %}<div class="t4s-results-others t4s_ratioadapt lazyloadt4s" data-rendert4s='{{ routes.search_url }}?q={{ search.terms | url_encode }}&type=article,page&section_id=search-others'></div>{% endunless -%}
              </div>
          {%- endif -%}  
