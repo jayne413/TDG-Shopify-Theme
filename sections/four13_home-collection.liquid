@@ -20,11 +20,19 @@
           <div class="four13_home-collection" style="">
           {% if customer %}
             {% assign wholesale = false %}
+            {% assign semi_wholesale = false %}
+            {% assign retail = false %}
             {% for tag in customer.tags %}
-              {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
+              {% if tag contains 'Franchise: Non-Reinders' or tag contains 'Barcana: Texas' %}
                 {% assign wholesale = true %}
+              {% elsif tag contains 'Franchise: Reinders' or tag contains 'Barcana: Non-Texas' %}
+                {% assign semi_wholesale = true %}
+              {% else %}
+                {% assign retail = true %}
               {% endif %}
             {% endfor %}
+          {% else %}
+             {% assign retail = true %}
           {% endif %}
     
           {% if wholesale %}
