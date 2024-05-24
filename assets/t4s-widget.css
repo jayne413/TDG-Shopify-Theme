@@ -227,7 +227,6 @@ a.t4s-s-item {
     -webkit-overflow-scrolling: touch;
 }
 .t4s-product-categories .t4s-cat-item {
-    padding-left: 15px;
     position: relative;
     font-weight: 400;
     margin-bottom: 5px;
