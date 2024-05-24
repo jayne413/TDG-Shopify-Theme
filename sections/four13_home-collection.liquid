@@ -50,8 +50,8 @@
             {% endfor %}
           {% elsif semi_wholesale %}
             {% for collection in collections %}
-              {% if collection.metafields.custom.wholesale_customer %}
-                {% if collection.metafields.custom.wholesale_customer == true %}
+              {% if collection.metafields.custom.logged_customer %}
+                {% if collection.metafields.custom.logged_customer == true %}
                   {%- assign image = collection.image | default: collection.products.first.featured_image -%}
                   <div class="four13_home-collection-item">
                     <a href="{{ collection.url }}">
