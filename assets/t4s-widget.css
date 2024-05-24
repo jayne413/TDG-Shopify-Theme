@@ -229,7 +229,6 @@ a.t4s-s-item {
 .t4s-product-categories .t4s-cat-item {
     position: relative;
     font-weight: 400;
-    margin-bottom: 5px;
     color: var(--secondary-color);
 }
 .t4s-product-categories .t4s-cat-item a {
