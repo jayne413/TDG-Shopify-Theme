@@ -2586,6 +2586,119 @@
         ],
         "settings": {
         }
+      },
+      "four13_header-inline-semi": {
+        "type": "four13_header-inline-semi",
+        "blocks": {
+          "four13_header-inline-semi-0": {
+            "type": "mega",
+            "settings": {
+              "title": "Home",
+              "url": "",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "#00BADB",
+              "pos_sub": "bottom",
+              "wid": "cus",
+              "cus_wid": 1200,
+              "id": 1,
+              "enable_packery": true,
+              "r_s_h_item": "20",
+              "r_s_v_item": "30"
+            }
+          },
+          "four13_header-inline-semi-1": {
+            "type": "mega",
+            "settings": {
+              "title": "mega",
+              "url": "",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "#00BADB",
+              "pos_sub": "bottom",
+              "wid": "cus",
+              "cus_wid": 1200,
+              "id": 1,
+              "enable_packery": true,
+              "r_s_h_item": "20",
+              "r_s_v_item": "30"
+            }
+          },
+          "four13_header-inline-semi-2": {
+            "type": "base",
+            "settings": {
+              "title": "base",
+              "url": "\/",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": ""
+            }
+          }
+        },
+        "block_order": [
+          "four13_header-inline-semi-0",
+          "four13_header-inline-semi-1",
+          "four13_header-inline-semi-2"
+        ],
+        "settings": {
+          "layout": "logo_left",
+          "full_header": true,
+          "height": 62,
+          "arrow": false,
+          "align": "center",
+          "hover": "hover_sideup",
+          "enable_active": false,
+          "h_navmb": 62,
+          "mb_cat": true,
+          "only_icon": false,
+          "first_cat": false,
+          "bgnav": "#ffffff",
+          "opnav": 100,
+          "clnav": "#222222",
+          "clnav_hover": "#b59677",
+          "h_icon": "kalles",
+          "hover_icon": "2",
+          "show_search": true,
+          "show_acc": true,
+          "show_wis": true,
+          "cart_des": "1",
+          "bg_hc": "#000000",
+          "cl_hc": "#ffffff",
+          "sticky_header": true,
+          "scroll_header": true,
+          "bgnavst": "#ffffff",
+          "opnavst": 100,
+          "clnavst": "#222222",
+          "clnavst_hover": "#b59677",
+          "transparent_header": false,
+          "space_transparent_header": false,
+          "bgnavtr": "#000000",
+          "opnavtr": 40,
+          "clnavtr": "#ffffff",
+          "clnavtr_hover": "#ffffff",
+          "source": "1",
+          "txt": "<p>Welcome to our store!<\/p>",
+          "primary_form_color": "#fff",
+          "secondary_form_color": "#222",
+          "fm_nav": "1",
+          "fs_nav": 14,
+          "fw_nav": 400,
+          "ls_nav": 0
+        }
+      },
+      "four13_mega-menu-semi": {
+        "type": "four13_mega-menu-semi",
+        "settings": {
+        }
       }
     },
     "content_for_index": [
