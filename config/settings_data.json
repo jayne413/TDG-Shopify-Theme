@@ -1844,19 +1844,20 @@
       "facets_tags": {
         "type": "facets_tags",
         "blocks": {
-          "1e0e1b8c-7e03-46a9-94aa-801b857b6514": {
-            "type": "color",
+          "other_pChFYw": {
+            "type": "other",
             "settings": {
               "hidden_block": false,
-              "title": "By Color",
-              "arra_enter": "Red,White,Brown,Blue, Black, Green, Grey, Sliver,Pink",
-              "use_auto_filter_tag": false,
-              "key": "Color"
+              "title": "By Watt",
+              "arra_enter": "",
+              "use_auto_filter_tag": true,
+              "key": "Watt",
+              "style": "checkbox"
             }
           }
         },
         "block_order": [
-          "1e0e1b8c-7e03-46a9-94aa-801b857b6514"
+          "other_pChFYw"
         ],
         "settings": {
         }
