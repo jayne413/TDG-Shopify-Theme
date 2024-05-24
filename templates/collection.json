@@ -58,7 +58,7 @@
         "collection_list_mVrCrV": {
           "type": "collection_list",
           "settings": {
-            "collection_list": "{{ collection.metafields.custom[\"3rd_level_sub_category\"].value }}"
+            "collection_list": "{{ collection.metafields.custom.group_category.value }}"
           }
         },
         "filter_AeiDLz": {
@@ -86,7 +86,7 @@
       "settings": {
         "show_top_collections": true,
         "source": "3",
-        "collection_list": "{{ collection.metafields.custom.group_category.value }}",
+        "collection_list": "{{ collection.metafields.custom[\"3rd_level_sub_category\"].value }}",
         "sort_collections": "alphabetical",
         "box_border": "top",
         "content_align": "center",
