@@ -241,7 +241,6 @@ a.t4s-s-item {
 }
 .t4s-product-categories .t4s-cat-item::before {
     color: inherit;
-    content: "+";
     left: 0;
     position: absolute;
 }
