@@ -61,7 +61,7 @@
             "collection_list": "{{ collection.metafields.custom.group_category.value }}"
           }
         },
-        "filter_HQQfet": {
+        "filter_AeiDLz": {
           "type": "filter",
           "settings": {
           }
@@ -69,7 +69,7 @@
       },
       "block_order": [
         "collection_list_mVrCrV",
-        "filter_HQQfet"
+        "filter_AeiDLz"
       ],
       "settings": {
         "enable_drawer": false,
