@@ -2590,50 +2590,10 @@
       "four13_header-inline-semi": {
         "type": "four13_header-inline-semi",
         "blocks": {
-          "four13_header-inline-semi-0": {
-            "type": "mega",
-            "settings": {
-              "title": "Home",
-              "url": "",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "#00BADB",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 1200,
-              "id": 1,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
-          "four13_header-inline-semi-1": {
-            "type": "mega",
-            "settings": {
-              "title": "mega",
-              "url": "",
-              "open_link": "_self",
-              "icon": "",
-              "cus_cl": false,
-              "cl": "#ec0101",
-              "lb": "",
-              "lb_cl": "#00BADB",
-              "pos_sub": "bottom",
-              "wid": "cus",
-              "cus_wid": 1200,
-              "id": 1,
-              "enable_packery": true,
-              "r_s_h_item": "20",
-              "r_s_v_item": "30"
-            }
-          },
           "four13_header-inline-semi-2": {
             "type": "base",
             "settings": {
-              "title": "base",
+              "title": "Home",
               "url": "\/",
               "open_link": "_self",
               "icon": "",
@@ -2642,18 +2602,106 @@
               "lb": "",
               "lb_cl": ""
             }
+          },
+          "drop_x8m4bj": {
+            "type": "drop",
+            "settings": {
+              "title": "FDS",
+              "url": "",
+              "open_link": "_self",
+              "menu": "wholesale-fds",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
+          },
+          "drop_JcRdzB": {
+            "type": "drop",
+            "settings": {
+              "title": "Figurines & Fiberglass",
+              "url": "",
+              "open_link": "_self",
+              "menu": "non-wholesale-figurines-fiberglass",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
+          },
+          "drop_QbRJwD": {
+            "type": "drop",
+            "settings": {
+              "title": "Pre-Decorated & Ornaments",
+              "url": "",
+              "open_link": "_self",
+              "menu": "non-wholesale-pre-decorated-ornaments",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
+          },
+          "drop_cVJCXk": {
+            "type": "drop",
+            "settings": {
+              "title": "Specialty Decor",
+              "url": "",
+              "open_link": "_self",
+              "menu": "specialty-decor",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
+          },
+          "drop_4mUqFf": {
+            "type": "drop",
+            "settings": {
+              "title": "Trees",
+              "url": "",
+              "open_link": "_self",
+              "menu": "non-wholesale-trees",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
           }
         },
         "block_order": [
-          "four13_header-inline-semi-0",
-          "four13_header-inline-semi-1",
-          "four13_header-inline-semi-2"
+          "four13_header-inline-semi-2",
+          "drop_x8m4bj",
+          "drop_JcRdzB",
+          "drop_QbRJwD",
+          "drop_cVJCXk",
+          "drop_4mUqFf"
         ],
         "settings": {
           "layout": "logo_left",
           "full_header": true,
           "height": 62,
-          "arrow": false,
+          "arrow": true,
           "align": "center",
           "hover": "hover_sideup",
           "enable_active": false,
