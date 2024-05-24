@@ -19,7 +19,7 @@ endif -%}
   section 'top-bar'
   case settings.header_design 
    when 'inline' 
-     section 'four13_header-inline-public'
+     section 'four13_header-inline-semi'
    when 'sidebar' 
      section 'header-sidebar'
    when 'bottom' 
@@ -33,5 +33,5 @@ endif -%}
      section 'header-vertical'
   endcase
   if admin_sp and settings.header_design != 'sidebar'
-  section 'four13_mega-menu-public'
+  section 'four13_mega-menu-semi'
   endif -%}

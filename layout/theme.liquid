@@ -104,6 +104,8 @@ t4sp-theme t4s-wrapper__{{ settings.general_layout }} rtl_{{ isRTL }} swatch_col
 
       {% if wholesale %}
         {%- render 'header', t_name: t_name -%}
+      {% elsif semi_wholesale %}
+        {%- render 'four13_header-semi', t_name: t_name -%}
       {% else %}
         {%- render 'four13_header-public', t_name: t_name -%}
       {% endif %}
