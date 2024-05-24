@@ -1,36 +1,5 @@
 {
   "sections": {
-    "top": {
-      "type": "top-collections",
-      "settings": {
-        "show_top_collections": true,
-        "source": "3",
-        "collection_list": "{{ collection.metafields.custom[\"3rd_level_sub_category\"].value }}",
-        "sort_collections": "alphabetical",
-        "box_border": "top",
-        "content_align": "center",
-        "hidden_mobile": false,
-        "space_item": 30,
-        "fontf": "inherit",
-        "text_cl": "#222222",
-        "text_cl_hover": "#b59677",
-        "text_fs": 14,
-        "text_lh": 45,
-        "text_fw": 400,
-        "text_ls": 0,
-        "font_italic": false,
-        "nav_btn": true,
-        "layout": "t4s-container-fluid",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": "",
-        "pd": "",
-        "mg_tb": "",
-        "pd_tb": "",
-        "mg_mb": "",
-        "pd_mb": ""
-      }
-    },
     "collection-heading-template": {
       "type": "heading-collection",
       "blocks": {
@@ -112,6 +81,37 @@
         "sidebar_pd": 15
       }
     },
+    "top": {
+      "type": "top-collections",
+      "settings": {
+        "show_top_collections": true,
+        "source": "3",
+        "collection_list": "{{ collection.metafields.custom[\"3rd_level_sub_category\"].value }}",
+        "sort_collections": "alphabetical",
+        "box_border": "top",
+        "content_align": "center",
+        "hidden_mobile": false,
+        "space_item": 30,
+        "fontf": "inherit",
+        "text_cl": "#ffffff",
+        "text_cl_hover": "#ebc878",
+        "text_fs": 14,
+        "text_lh": 45,
+        "text_fw": 400,
+        "text_ls": 0,
+        "font_italic": false,
+        "nav_btn": true,
+        "layout": "t4s-container-fluid",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": "",
+        "pd_mb": ""
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -175,9 +175,9 @@
     }
   },
   "order": [
-    "top",
     "collection-heading-template",
     "sidebar",
+    "top",
     "main"
   ]
 }
