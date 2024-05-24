@@ -27,10 +27,21 @@
             "text_ls_mb": 2,
             "mgb_mb": 5
           }
+        },
+        "3_wNR8NM": {
+          "type": "3",
+          "settings": {
+            "breadcrumb_color_link": "#000000",
+            "breadcrumb_color": "#000000",
+            "brc_mgb": 5,
+            "brc_mgb_tb": 5,
+            "brc_mgb_mb": 5
+          }
         }
       },
       "block_order": [
-        "169f514a-3483-4e10-8698-964f7a612e97"
+        "169f514a-3483-4e10-8698-964f7a612e97",
+        "3_wNR8NM"
       ],
       "settings": {
         "image": "shopify:\/\/shop_images\/360_F_361960870_UW7evqdYC5VQloEmRJA3clZGQLq5Zauu.jpg",
