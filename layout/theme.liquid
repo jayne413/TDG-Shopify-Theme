@@ -84,6 +84,7 @@ t4sp-theme t4s-wrapper__{{ settings.general_layout }} rtl_{{ isRTL }} swatch_col
     <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ "accessibility.skip_to_text" | t }}</a>
     <div class="t4s-close-overlay t4s-op-0"></div>
 
+    {% comment %} Call Menu on the public header if needed to change {% endcomment %}
     <div class="t4s-website-wrapper">
       {% if customer %}
         {% assign wholesale = false %}
