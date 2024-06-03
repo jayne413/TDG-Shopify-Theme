@@ -50,7 +50,7 @@
                         {% endif %}
                         
                         {% if show_menu %}
-                          <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
+                          <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}> {{ customer_type }}
                             <a href="{{ url_current }}">
                               <span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
                                 {% if block_stts.icons_op == '2' and block_stts.icon != blank %}
