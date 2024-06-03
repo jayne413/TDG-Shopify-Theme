@@ -50,11 +50,9 @@
                          {% assign retail = true %}
                       {% endif %}
 
-                      {{ wholesale }}
-                      {{ semi_wholesale }}
-                      {{ retail }}
-
+                
                       {% if wholesale %}
+                        WHOLESALE
                         {% if block_stts.show_w %}
                           <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
                           <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
@@ -108,6 +106,7 @@
                            </li>
                         {% endif %}
                       {% elsif semi_wholesale %}
+                        SEMI-WHOLESALE
                         {% if block_stts.show_sw %}
                           <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
                           <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
@@ -161,6 +160,7 @@
                            </li>
                         {% endif %}
                       {% else %}
+                        RETAIL
                         {% if block_stts.show_r %}
                           <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
                           <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
