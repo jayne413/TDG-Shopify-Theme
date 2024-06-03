@@ -2425,7 +2425,7 @@
           "cat_bKwz9X": {
             "type": "cat",
             "settings": {
-              "show_r": false,
+              "show_r": true,
               "show_w": false,
               "cat": "",
               "title": "",
@@ -2440,7 +2440,7 @@
           "cat_e3P7nR": {
             "type": "cat",
             "settings": {
-              "show_r": false,
+              "show_r": true,
               "show_w": false,
               "cat": "",
               "title": "",
@@ -2455,7 +2455,7 @@
           "cat_CEheMt": {
             "type": "cat",
             "settings": {
-              "show_r": false,
+              "show_r": true,
               "show_w": false,
               "cat": "",
               "title": "",
@@ -2470,7 +2470,7 @@
           "cat_96cQtC": {
             "type": "cat",
             "settings": {
-              "show_r": false,
+              "show_r": true,
               "show_w": false,
               "cat": "",
               "title": "",
