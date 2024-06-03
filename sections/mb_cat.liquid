@@ -50,6 +50,10 @@
                          {% assign retail = true %}
                       {% endif %}
 
+                      {{ wholesale }}
+                      {{ semi_wholesale }}
+                      {{ retail }}
+
                       {% if wholesale %}
                         {% if block_stts.show_w %}
                           <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
