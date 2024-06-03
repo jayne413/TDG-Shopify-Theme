@@ -103,6 +103,59 @@
                              </ul>
                            </li>
                         {% endif %}
+                      {% elsif semi_wholesale %}
+                        {% if block_stts.show_sw %}
+                          <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
+                          <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
+  
+                           {%- if block_stts.icons_op == '2' and block_stts.icon != blank %}<i class="{{ block_stts.icon | strip }}"></i>
+                           {%- elsif block_stts.icons_op == '1' and block_stts.image != blank %}
+                               {%- assign image = block_stts.image -%}
+                              <i class="t4s-d-inline-block t4s-pr">
+                                 <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
+                                 <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
+                               </i>
+                            {% endif -%}
+  
+                           {{ tt_current }}{% if block_stts.lb != blank %}<span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>{% endif %}</span><span class="t4s-mb-nav__icon"></span></a>
+                             <ul class="t4s-sub-menu">
+                                {%- for link in linklists[block_stts.menu].links -%}
+  
+                                   {%- assign arrlt = link.title | split: '[' -%}
+                                   {%- if link.links != blank -%}
+                                      <li class="t4s-menu-item t4s-item-level-1 t4s-menu-item-has-children {{ only_icon }}{% if link.active %} is--current{% endif %}">
+                                         <a href="{{ link.url }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">{%- render 'lb_inc_mb', arrlt: arrlt -%}</span><span class="t4s-mb-nav__icon"></span></a>
+                                         <ul class="t4s-sub-sub-menu">
+                                            {%- for child_link in link.links -%}
+  
+                                               {%- assign arrlt = child_link.title | split: '[' -%}
+                                               {%- if child_link.links != blank -%}
+                                                  <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-2 t4s-menu-item-has-children {{ only_icon }}{% if child_link.active %} is--current{% endif %}">
+                                                     <a href="{{ child_link.url }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">{%- render 'lb_inc_mb', arrlt: arrlt -%}</span><span class="t4s-mb-nav__icon"></span></a>
+                                                     <ul class="t4s-sub-sub-sub-menu">
+  
+                                                        {%- for grandchild_link in child_link.links -%}
+                                                        {%- assign arrlt = grandchild_link.title | split: '[' -%}
+                                                        <li class="t4s-menu-item t4s-item-level-3{% if grandchild_link.active %} is--current{% endif %}"><a href="{{ grandchild_link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                                        {%- endfor -%}
+  
+                                                     </ul>
+                                                  </li>
+                                               {%- else -%}
+                                                   <li class="t4s-menu-item t4s-item-level-2{% if child_link.active %} is--current{% endif %}"><a href="{{ child_link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                               {%- endif -%}
+  
+                                            {%- endfor -%}
+                                         </ul>
+                                      </li>
+                                   {%- else -%}
+                                      <li class="t4s-menu-item t4s-item-level-1{% if link.active %} is--current{% endif %}"><a href="{{ link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                   {%- endif -%}
+  
+                                {%- endfor -%}
+                             </ul>
+                           </li>
+                        {% endif %}
                       {% else %}
                         {% if block_stts.show_r %}
                           <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
