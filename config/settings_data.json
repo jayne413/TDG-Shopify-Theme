@@ -2422,156 +2422,12 @@
       "mb_cat": {
         "type": "mb_cat",
         "blocks": {
-          "37d41873-33b9-495f-b9e9-261690a26f44": {
-            "type": "cat",
-            "settings": {
-              "show_r": true,
-              "show_sw": true,
-              "show_w": true,
-              "cat": "bargains",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-percent"
-            }
-          },
-          "9bc80180-7db8-4a0c-a987-5452a9f93167": {
-            "type": "cat",
-            "settings": {
-              "show_r": false,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "new-products",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-snowflake"
-            }
-          },
-          "a8e444e6-eaae-4fff-a0dd-f13d43abd5f0": {
-            "type": "cat",
-            "settings": {
-              "show_r": true,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "trees",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-tree"
-            }
-          },
-          "251a9643-5d61-4fca-a85f-9b110891798b": {
-            "type": "cat",
-            "settings": {
-              "show_r": false,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "fds",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-bell"
-            }
-          },
-          "cat_Kz3LG3": {
-            "type": "cat",
-            "settings": {
-              "show_r": true,
-              "show_sw": false,
-              "show_w": false,
-              "cat": "fds-retail",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-bell"
-            }
-          },
-          "cat_nj8ewq": {
-            "type": "cat",
-            "settings": {
-              "show_r": true,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "specialty-decor",
-              "title": "",
-              "url": "",
-              "menu": "specialty-decor",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-magic"
-            }
-          },
-          "cat_7MMCrm": {
-            "type": "cat",
-            "settings": {
-              "show_r": false,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "decor-smart-rgb",
-              "title": "",
-              "url": "",
-              "menu": "decor-smart-rgb",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-lightbulb"
-            }
-          },
-          "02afbc74-7e86-47eb-a54c-4b782b9be1ec": {
-            "type": "cat",
-            "settings": {
-              "show_r": false,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "decorating-basics",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-thumbtack"
-            }
-          },
-          "cd037d53-15f5-4756-9039-1b2b00959d4e": {
-            "type": "cat",
-            "settings": {
-              "show_r": true,
-              "show_sw": false,
-              "show_w": true,
-              "cat": "figurines-fiberglass",
-              "title": "",
-              "url": "",
-              "menu": "",
-              "lb": "",
-              "lb_cl": "#e91e63",
-              "icons_op": "2",
-              "icon": "las la-snowman"
-            }
-          },
           "5cb7c19c-21e4-4bd3-8ae3-a439bbfcdaee": {
             "type": "cat",
             "settings": {
               "show_r": true,
               "show_sw": false,
-              "show_w": true,
+              "show_w": false,
               "cat": "pre-decorated-ornaments",
               "title": "",
               "url": "",
@@ -2584,15 +2440,6 @@
           }
         },
         "block_order": [
-          "37d41873-33b9-495f-b9e9-261690a26f44",
-          "9bc80180-7db8-4a0c-a987-5452a9f93167",
-          "a8e444e6-eaae-4fff-a0dd-f13d43abd5f0",
-          "251a9643-5d61-4fca-a85f-9b110891798b",
-          "cat_Kz3LG3",
-          "cat_nj8ewq",
-          "cat_7MMCrm",
-          "02afbc74-7e86-47eb-a54c-4b782b9be1ec",
-          "cd037d53-15f5-4756-9039-1b2b00959d4e",
           "5cb7c19c-21e4-4bd3-8ae3-a439bbfcdaee"
         ],
         "settings": {
