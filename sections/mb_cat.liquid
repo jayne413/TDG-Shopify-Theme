@@ -29,15 +29,26 @@
                     {%- if linklists[block_stts.menu].links.size > 0 -%}
                        {% if customer %}
                         {% assign wholesale = false %}
+                        {% assign semi_wholesale = false %}
                         {% assign retail = false %}
                         {% for tag in customer.tags %}
-                          {% if tag contains 'Non-Reinders' or tag contains  'Barcana: Texas' %}
+                          {% if tag contains 'Franchise: Non-Reinders' or tag contains 'Barcana: Texas' %}
                             {% assign wholesale = true %}
+                            {% assign semi_wholesale = false %}
+                            {% assign retail = false %}
+                          {% elsif tag contains 'Franchise: Reinders' or tag contains 'Barcana: Non-Texas' %}
+                            {% assign semi_wholesale = true %}
+                            {% assign wholesale = false %}
+                            {% assign retail = false %}
                           {% else %}
                             {% assign retail = true %}
+                            {% assign wholesale = false %}
+                            {% assign semi_wholesale = false %}
                           {% endif %}
                         {% endfor %}
-                       {% endif %}
+                      {% else %}
+                         {% assign retail = true %}
+                      {% endif %}
 
                       {% if wholesale %}
                         {% if block_stts.show_w %}
