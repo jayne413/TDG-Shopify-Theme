@@ -2426,6 +2426,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": true,
               "cat": "figurines-fiberglass",
               "title": "",
@@ -2441,6 +2442,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": false,
               "cat": "",
               "title": "",
@@ -2456,6 +2458,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": false,
               "cat": "",
               "title": "",
@@ -2471,6 +2474,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": false,
               "cat": "",
               "title": "",
