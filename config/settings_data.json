@@ -2425,8 +2425,7 @@
           "5cb7c19c-21e4-4bd3-8ae3-a439bbfcdaee": {
             "type": "cat",
             "settings": {
-              "show_r": true,
-              "show_sw": false,
+              "show_r": false,
               "show_w": false,
               "cat": "pre-decorated-ornaments",
               "title": "",
