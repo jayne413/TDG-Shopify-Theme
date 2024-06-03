@@ -2425,7 +2425,8 @@
           "37d41873-33b9-495f-b9e9-261690a26f44": {
             "type": "cat",
             "settings": {
-              "show_r": false,
+              "show_r": true,
+              "show_sw": true,
               "show_w": true,
               "cat": "bargains",
               "title": "",
@@ -2441,6 +2442,7 @@
             "type": "cat",
             "settings": {
               "show_r": false,
+              "show_sw": false,
               "show_w": true,
               "cat": "new-products",
               "title": "",
@@ -2456,6 +2458,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": true,
               "cat": "trees",
               "title": "",
@@ -2471,6 +2474,7 @@
             "type": "cat",
             "settings": {
               "show_r": false,
+              "show_sw": false,
               "show_w": true,
               "cat": "fds",
               "title": "",
@@ -2486,6 +2490,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": false,
               "cat": "fds-retail",
               "title": "",
@@ -2501,6 +2506,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": true,
               "cat": "specialty-decor",
               "title": "",
@@ -2516,6 +2522,7 @@
             "type": "cat",
             "settings": {
               "show_r": false,
+              "show_sw": false,
               "show_w": true,
               "cat": "decor-smart-rgb",
               "title": "",
@@ -2531,6 +2538,7 @@
             "type": "cat",
             "settings": {
               "show_r": false,
+              "show_sw": false,
               "show_w": true,
               "cat": "decorating-basics",
               "title": "",
@@ -2546,6 +2554,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": true,
               "cat": "figurines-fiberglass",
               "title": "",
@@ -2561,6 +2570,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
+              "show_sw": false,
               "show_w": true,
               "cat": "pre-decorated-ornaments",
               "title": "",
