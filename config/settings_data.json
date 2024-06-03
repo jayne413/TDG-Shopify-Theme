@@ -2517,6 +2517,38 @@
               "icons_op": "0",
               "icon": "las la-home"
             }
+          },
+          "cat_fiQbpb": {
+            "type": "cat",
+            "settings": {
+              "show_r": false,
+              "show_sw": false,
+              "show_w": true,
+              "cat": "new-products",
+              "title": "",
+              "url": "",
+              "menu": "wholesale-new-products",
+              "lb": "",
+              "lb_cl": "#e91e63",
+              "icons_op": "0",
+              "icon": "las la-home"
+            }
+          },
+          "cat_Y6bfab": {
+            "type": "cat",
+            "settings": {
+              "show_r": false,
+              "show_sw": false,
+              "show_w": true,
+              "cat": "decorating-basics",
+              "title": "",
+              "url": "",
+              "menu": "wholesale-decorating-basics",
+              "lb": "",
+              "lb_cl": "#e91e63",
+              "icons_op": "0",
+              "icon": "las la-home"
+            }
           }
         },
         "block_order": [
@@ -2525,7 +2557,9 @@
           "cat_e3P7nR",
           "cat_JUgLhc",
           "cat_CEheMt",
-          "cat_96cQtC"
+          "cat_96cQtC",
+          "cat_fiQbpb",
+          "cat_Y6bfab"
         ],
         "settings": {
         }
