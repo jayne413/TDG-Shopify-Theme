@@ -2422,6 +2422,22 @@
       "mb_cat": {
         "type": "mb_cat",
         "blocks": {
+          "cat_g8e387": {
+            "type": "cat",
+            "settings": {
+              "show_r": false,
+              "show_sw": true,
+              "show_w": true,
+              "cat": "fds",
+              "title": "",
+              "url": "",
+              "menu": "wholesale-fds",
+              "lb": "",
+              "lb_cl": "#e91e63",
+              "icons_op": "0",
+              "icon": "las la-home"
+            }
+          },
           "cat_bKwz9X": {
             "type": "cat",
             "settings": {
@@ -2444,10 +2460,26 @@
               "show_r": true,
               "show_sw": false,
               "show_w": false,
-              "cat": "",
+              "cat": "pre-decorated-ornaments",
               "title": "",
               "url": "",
               "menu": "non-wholesale-pre-decorated-ornaments",
+              "lb": "",
+              "lb_cl": "#e91e63",
+              "icons_op": "0",
+              "icon": "las la-home"
+            }
+          },
+          "cat_JUgLhc": {
+            "type": "cat",
+            "settings": {
+              "show_r": false,
+              "show_sw": true,
+              "show_w": true,
+              "cat": "specialty-decor",
+              "title": "",
+              "url": "",
+              "menu": "specialty-decor-2",
               "lb": "",
               "lb_cl": "#e91e63",
               "icons_op": "0",
@@ -2460,7 +2492,7 @@
               "show_r": true,
               "show_sw": false,
               "show_w": false,
-              "cat": "",
+              "cat": "specialty-decor",
               "title": "",
               "url": "",
               "menu": "specialty-decor",
@@ -2476,7 +2508,7 @@
               "show_r": true,
               "show_sw": false,
               "show_w": false,
-              "cat": "",
+              "cat": "trees",
               "title": "",
               "url": "",
               "menu": "non-wholesale-trees",
@@ -2488,8 +2520,10 @@
           }
         },
         "block_order": [
+          "cat_g8e387",
           "cat_bKwz9X",
           "cat_e3P7nR",
+          "cat_JUgLhc",
           "cat_CEheMt",
           "cat_96cQtC"
         ],
