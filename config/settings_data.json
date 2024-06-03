@@ -2426,7 +2426,7 @@
             "type": "cat",
             "settings": {
               "show_r": true,
-              "show_sw": false,
+              "show_sw": true,
               "show_w": true,
               "cat": "figurines-fiberglass",
               "title": "",
