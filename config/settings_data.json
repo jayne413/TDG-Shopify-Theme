@@ -2343,6 +2343,23 @@
               "pos_sub": "bottom",
               "pos": "left"
             }
+          },
+          "drop_9BtKXU": {
+            "type": "drop",
+            "settings": {
+              "title": "Landscape",
+              "url": "",
+              "open_link": "_self",
+              "menu": "landscape",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
           }
         },
         "block_order": [
@@ -2351,7 +2368,8 @@
           "drop_RYYiCH",
           "drop_dV664H",
           "drop_EnG4WK",
-          "drop_drLYV9"
+          "drop_drLYV9",
+          "drop_9BtKXU"
         ],
         "settings": {
           "layout": "logo_left",
