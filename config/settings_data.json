@@ -2700,7 +2700,7 @@
         ],
         "settings": {
           "layout": "logo_left",
-          "full_header": true,
+          "full_header": false,
           "height": 62,
           "arrow": true,
           "align": "center",
