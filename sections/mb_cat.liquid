@@ -3,143 +3,169 @@
    assign only_icon = 't4s-only_icon_' | append: settings.only_icon
    assign sid = section.id
    if sid == 'mb_cat'
-      assign show_code = true
-   elsif sid != 'mb_cat' and request.design_mode or request.page_type == 'index'
-      assign show_code = true
+    assign show_code = true
+   elsif sid != 'mb_cat' and request.design_mode or request.page_type == 'index' 
+    assign show_code = true
    else
-      assign show_code = false
-   endif
--%}
-
+    assign show_code = false
+   endif -%}
+   
 {%- if show_code -%}
    <ul id="menu-mb__cat" class="t4s-mb__menu" data-section-id="{{ sid }}">
       {%- if section.blocks.size > 0 -%}
-         {%- for block in section.blocks -%}
-            {%- liquid
-               assign block_stts = block.settings
-               assign collection = collections[block_stts.cat]
-               assign tt_current = block_stts.title | default: collection.title
+        {%- for block in section.blocks -%}
+
+            {%- liquid 
+               assign block_stts  = block.settings
+               assign collection  = collections[block_stts.cat]
+               assign tt_current  = block_stts.title | default: collection.title
                assign url_current = block_stts.url | default: collection.url
                if tt_current == blank
                   continue
                endif
-            -%}
-            {%- case block.type -%}
-               {%- when 'cat' -%}
-                  {%- if linklists[block_stts.menu].links.size > 0 -%}
-                     {% assign customer_type = 'retail' %}
-                     {% if customer %}
+           -%}
+              {%- case block.type -%}
+                {%- when 'cat' -%}
+                    {%- if linklists[block_stts.menu].links.size > 0 -%}
+                       {% if customer %}
+                        {% assign wholesale = false %}
+                        {% assign retail = false %}
                         {% for tag in customer.tags %}
-                           {% if tag contains 'Non-Reinders' or tag contains 'Barcana: Texas' %}
-                              {% assign customer_type = 'wholesale' %}
-                              {% break %}
-                           {% endif %}
+                          {% if tag contains 'Non-Reinders' or tag contains  'Barcana: Texas' %}
+                            {% assign wholesale = true %}
+                          {% else %}
+                            {% assign retail = true %}
+                          {% endif %}
                         {% endfor %}
-                     {% endif %}
+                       {% endif %}
 
-                     {% assign show_menu = false %}
-                     {% if customer_type == 'wholesale' and block_stts.show_w %}
-                        {% assign show_menu = true %}
-                     {% elsif customer_type == 'retail' and block_stts.show_r %}
-                        {% assign show_menu = true %}
-                     {% endif %}
-
-                     {% if show_menu %}
-                        <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
-                           <a href="{{ url_current }}">
-                              <span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
-                                 {%- if block_stts.icons_op == '2' and block_stts.icon != blank -%}
-                                    <i class="{{ block_stts.icon | strip }}"></i>
-                                 {%- elsif block_stts.icons_op == '1' and block_stts.image != blank -%}
-                                    {%- assign image = block_stts.image -%}
-                                    <i class="t4s-d-inline-block t4s-pr">
-                                       <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
-                                       <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
-                                    </i>
-                                 {% endif -%}
-                                 {{ tt_current }}
-                                 {% if block_stts.lb != blank %}
-                                    <span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>
-                                 {% endif %}
-                              </span>
-                              <span class="t4s-mb-nav__icon"></span>
-                           </a>
-                           <ul class="t4s-sub-menu">
-                              {%- for link in linklists[block_stts.menu].links -%}
-                                 {%- assign arrlt = link.title | split: '[' -%}
-                                 {%- if link.links != blank -%}
-                                    <li class="t4s-menu-item t4s-item-level-1 t4s-menu-item-has-children {{ only_icon }}{% if link.active %} is--current{% endif %}">
-                                       <a href="{{ link.url }}">
-                                          <span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
-                                             {%- render 'lb_inc_mb', arrlt: arrlt -%}
-                                          </span>
-                                          <span class="t4s-mb-nav__icon"></span>
-                                       </a>
-                                       <ul class="t4s-sub-sub-menu">
-                                          {%- for child_link in link.links -%}
-                                             {%- assign arrlt = child_link.title | split: '[' -%}
-                                             {%- if child_link.links != blank -%}
-                                                <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-2 t4s-menu-item-has-children {{ only_icon }}{% if child_link.active %} is--current{% endif %}">
-                                                   <a href="{{ child_link.url }}">
-                                                      <span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
-                                                         {%- render 'lb_inc_mb', arrlt: arrlt -%}
-                                                      </span>
-                                                      <span class="t4s-mb-nav__icon"></span>
-                                                   </a>
-                                                   <ul class="t4s-sub-sub-sub-menu">
-                                                      {%- for grandchild_link in child_link.links -%}
-                                                         {%- assign arrlt = grandchild_link.title | split: '[' -%}
-                                                         <li class="t4s-menu-item t4s-item-level-3{% if grandchild_link.active %} is--current{% endif %}">
-                                                            <a href="{{ grandchild_link.url }}">
-                                                               {%- render 'lb_inc_mb', arrlt: arrlt -%}
-                                                            </a>
-                                                         </li>
-                                                      {%- endfor -%}
-                                                   </ul>
-                                                </li>
-                                             {%- else -%}
-                                                <li class="t4s-menu-item t4s-item-level-2{% if child_link.active %} is--current{% endif %}">
-                                                   <a href="{{ child_link.url }}">
-                                                      {%- render 'lb_inc_mb', arrlt: arrlt -%}
-                                                   </a>
-                                                </li>
-                                             {%- endif -%}
-                                          {%- endfor -%}
-                                       </ul>
-                                    </li>
-                                 {%- else -%}
-                                    <li class="t4s-menu-item t4s-item-level-1{% if link.active %} is--current{% endif %}">
-                                       <a href="{{ link.url }}">
-                                          {%- render 'lb_inc_mb', arrlt: arrlt -%}
-                                       </a>
-                                    </li>
-                                 {%- endif -%}
-                              {%- endfor -%}
-                           </ul>
-                        </li>
-                     {% endif %}
-                  {%- else -%}
-                     <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0">
-                        <a href="{{ url_current }}">
-                           {%- if block_stts.icons_op == '2' and block_stts.icon != blank -%}
-                              <i class="{{ block_stts.icon | strip }}"></i>
-                           {%- elsif block_stts.icons_op == '1' and block_stts.image != blank -%}
-                              {%- assign image = block_stts.image -%}
+                      {% if wholesale %}
+                        {% if block_stts.show_w %}
+                          <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
+                          <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
+  
+                           {%- if block_stts.icons_op == '2' and block_stts.icon != blank %}<i class="{{ block_stts.icon | strip }}"></i>
+                           {%- elsif block_stts.icons_op == '1' and block_stts.image != blank %}
+                               {%- assign image = block_stts.image -%}
                               <i class="t4s-d-inline-block t4s-pr">
                                  <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
                                  <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
-                              </i>
-                           {% endif -%}
-                           {{ tt_current }}
-                           {% if block_stts.lb != blank %}
-                              <span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>
-                           {% endif %}
-                        </a>
-                     </li>
-                  {%- endif -%}
-               {%- else -%}
-                  {%- capture get_sub_cat -%}
-                     {%- for i in (1..25) -%}
+                               </i>
+                            {% endif -%}
+  
+                           {{ tt_current }}{% if block_stts.lb != blank %}<span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>{% endif %}</span><span class="t4s-mb-nav__icon"></span></a>
+                             <ul class="t4s-sub-menu">
+                                {%- for link in linklists[block_stts.menu].links -%}
+  
+                                   {%- assign arrlt = link.title | split: '[' -%}
+                                   {%- if link.links != blank -%}
+                                      <li class="t4s-menu-item t4s-item-level-1 t4s-menu-item-has-children {{ only_icon }}{% if link.active %} is--current{% endif %}">
+                                         <a href="{{ link.url }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">{%- render 'lb_inc_mb', arrlt: arrlt -%}</span><span class="t4s-mb-nav__icon"></span></a>
+                                         <ul class="t4s-sub-sub-menu">
+                                            {%- for child_link in link.links -%}
+  
+                                               {%- assign arrlt = child_link.title | split: '[' -%}
+                                               {%- if child_link.links != blank -%}
+                                                  <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-2 t4s-menu-item-has-children {{ only_icon }}{% if child_link.active %} is--current{% endif %}">
+                                                     <a href="{{ child_link.url }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">{%- render 'lb_inc_mb', arrlt: arrlt -%}</span><span class="t4s-mb-nav__icon"></span></a>
+                                                     <ul class="t4s-sub-sub-sub-menu">
+  
+                                                        {%- for grandchild_link in child_link.links -%}
+                                                        {%- assign arrlt = grandchild_link.title | split: '[' -%}
+                                                        <li class="t4s-menu-item t4s-item-level-3{% if grandchild_link.active %} is--current{% endif %}"><a href="{{ grandchild_link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                                        {%- endfor -%}
+  
+                                                     </ul>
+                                                  </li>
+                                               {%- else -%}
+                                                   <li class="t4s-menu-item t4s-item-level-2{% if child_link.active %} is--current{% endif %}"><a href="{{ child_link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                               {%- endif -%}
+  
+                                            {%- endfor -%}
+                                         </ul>
+                                      </li>
+                                   {%- else -%}
+                                      <li class="t4s-menu-item t4s-item-level-1{% if link.active %} is--current{% endif %}"><a href="{{ link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                   {%- endif -%}
+  
+                                {%- endfor -%}
+                             </ul>
+                           </li>
+                        {% endif %}
+                      {% else %}
+                        {% if block_stts.show_r %}
+                          <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
+                          <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
+  
+                           {%- if block_stts.icons_op == '2' and block_stts.icon != blank %}<i class="{{ block_stts.icon | strip }}"></i>
+                           {%- elsif block_stts.icons_op == '1' and block_stts.image != blank %}
+                               {%- assign image = block_stts.image -%}
+                              <i class="t4s-d-inline-block t4s-pr">
+                                 <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
+                                 <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
+                               </i>
+                            {% endif -%}
+  
+                           {{ tt_current }}{% if block_stts.lb != blank %}<span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>{% endif %}</span><span class="t4s-mb-nav__icon"></span></a>
+                             <ul class="t4s-sub-menu">
+                                {%- for link in linklists[block_stts.menu].links -%}
+  
+                                   {%- assign arrlt = link.title | split: '[' -%}
+                                   {%- if link.links != blank -%}
+                                      <li class="t4s-menu-item t4s-item-level-1 t4s-menu-item-has-children {{ only_icon }}{% if link.active %} is--current{% endif %}">
+                                         <a href="{{ link.url }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">{%- render 'lb_inc_mb', arrlt: arrlt -%}</span><span class="t4s-mb-nav__icon"></span></a>
+                                         <ul class="t4s-sub-sub-menu">
+                                            {%- for child_link in link.links -%}
+  
+                                               {%- assign arrlt = child_link.title | split: '[' -%}
+                                               {%- if child_link.links != blank -%}
+                                                  <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-2 t4s-menu-item-has-children {{ only_icon }}{% if child_link.active %} is--current{% endif %}">
+                                                     <a href="{{ child_link.url }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">{%- render 'lb_inc_mb', arrlt: arrlt -%}</span><span class="t4s-mb-nav__icon"></span></a>
+                                                     <ul class="t4s-sub-sub-sub-menu">
+  
+                                                        {%- for grandchild_link in child_link.links -%}
+                                                        {%- assign arrlt = grandchild_link.title | split: '[' -%}
+                                                        <li class="t4s-menu-item t4s-item-level-3{% if grandchild_link.active %} is--current{% endif %}"><a href="{{ grandchild_link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                                        {%- endfor -%}
+  
+                                                     </ul>
+                                                  </li>
+                                               {%- else -%}
+                                                   <li class="t4s-menu-item t4s-item-level-2{% if child_link.active %} is--current{% endif %}"><a href="{{ child_link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                               {%- endif -%}
+  
+                                            {%- endfor -%}
+                                         </ul>
+                                      </li>
+                                   {%- else -%}
+                                      <li class="t4s-menu-item t4s-item-level-1{% if link.active %} is--current{% endif %}"><a href="{{ link.url }}">{%- render 'lb_inc_mb', arrlt: arrlt -%}</a></li>
+                                   {%- endif -%}
+  
+                                {%- endfor -%}
+                             </ul>
+                           </li>
+                        {% endif %}
+                      {% endif %}
+                      
+                    {%- else -%}
+                        <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0"><a href="{{ url_current }}">
+  
+                         {%- if block_stts.icons_op == '2' and block_stts.icon != blank %}<i class="{{ block_stts.icon | strip }}"></i>
+                         {%- elsif block_stts.icons_op == '1' and block_stts.image != blank %}
+                            {%- assign image = block_stts.image -%}
+                            <i class="t4s-d-inline-block t4s-pr">
+                                <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
+                                <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
+                            </i>
+                        {% endif -%}
+  
+                         {{ tt_current }}{% if block_stts.lb != blank %}<span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>{% endif %}</a></li>
+                    {%- endif -%}
+  
+                {%- else -%}
+              
+                 {%- capture get_sub_cat -%}
+                        {%- for i in (1..25) -%}
                         {%- assign cat = 'cat' | append: i -%}
                         {%- assign url = 'url' | append: i -%}
                         {%- assign image = 'image' | append: i -%}
@@ -147,78 +173,65 @@
                         {%- assign url_id = block_stts[url] -%}
                         {%- assign image_id = block_stts[image] -%}
                         {%- assign collec = collections[cat_id] -%}
-                        {%- if collec == blank and url_id == blank %}{% continue %}{% endif %}{% assign image = image_id | default: collec.image -%}
-                        <div class="t4s-cat_grid_item t4s-cat_space_item">
-                           <div class="t4s-cat_grid_item__content t4s-pr t4s-oh">
-                              <a href="{{ url_id | default: collec.url }}" class="t4s-d-block t4s_ratio t4s-cat_grid_item__link" style="--aspect-ratioapt: {{ image.aspect_ratio | default: 1.7777 }}">
-                                 {%- if image != blank -%}
-                                    <img class="lazyloadt4s" data-src="{{ image | image_url: width: 1 }}" data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]" data-optimumx="2" data-sizes="auto" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}" loading="lazy">
-                                    <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
-                                 {%- else -%}
-                                    {{ 'image' | placeholder_svg_tag: 't4s-placeholder-svg t4s-obj-eff' }}
-                                 {%- endif -%}
-                              </a>
-                              <div class="t4s-cat_grid_item__wrapper t4s-pe-none">
-                                 <div class="t4s-cat_grid_item__title h3">{{ collec.title }}</div>
+  
+                            {%- if collec == blank and url_id == blank %}{% continue %}{% endif %}{% assign image = image_id | default: collec.image -%}
+                             <div class="t4s-cat_grid_item t4s-cat_space_item">
+                              <div class="t4s-cat_grid_item__content t4s-pr t4s-oh">
+                                 <a href="{{ url_id | default: collec.url }}" class="t4s-d-block t4s_ratio t4s-cat_grid_item__link" style="--aspect-ratioapt: {{ image.aspect_ratio | default: 1.7777 }}">
+                                  {%- if image != blank -%}
+                                      <img class="lazyloadt4s" data-src="{{ image | image_url: width: 1 }}" data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]" data-optimumx="2" data-sizes="auto" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}" loading="lazy">    
+                                      <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
+                                  {%- else -%}
+                                     {{ 'image' | placeholder_svg_tag: 't4s-placeholder-svg t4s-obj-eff' }}
+                                  {%- endif -%}
+                                 </a>
+                                 <div class="t4s-cat_grid_item__wrapper t4s-pe-none"><div class="t4s-cat_grid_item__title h3">{{ collec.title }}</div></div>
                               </div>
-                           </div>
-                        </div>
-                     {%- endfor -%}
-                  {%- endcapture -%}
-
-                  {%- if get_sub_cat != blank -%}
+                             </div>
+                           
+                        {%- endfor -%}
+                 {%- endcapture -%}
+  
+                 {%- if get_sub_cat != blank -%}
                      <li id="item_{{ block.id }}" class="t4s-menu-item t4s-menu-item-cat t4s-item-level-0 t4s-menu-item-has-children {{ only_icon }}" {{ block.shopify_attributes }}>
-                        <a href="{{ url_current }}">
-                           <span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
-                              {%- if block_stts.icons_op == '2' and block_stts.icon != blank -%}
-                                 <i class="{{ block_stts.icon | strip }}"></i>
-                              {%- elsif block_stts.icons_op == '1' and block_stts.image != blank -%}
-                                 {%- assign image = block_stts.image -%}
-                                 <i class="t4s-d-inline-block t4s-pr">
-                                    <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
-                                    <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
-                                 </i>
-                              {% endif -%}
-                              {{ tt_current }}
-                              {% if block_stts.lb != blank %}
-                                 <span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>
-                              {% endif %}
-                           </span>
-                           <span class="t4s-mb-nav__icon"></span>
-                        </a>
-                        <ul class="t4s-sub-menu t4s_ratioadapt t4s_cover t4s-cat_design_2">{{ get_sub_cat }}</ul>
-                     </li>
-                  {%- else -%}
-                     <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0">
-                        <a href="{{ url_current }}">
-                           {%- if block_stts.icons_op == '2' and block_stts.icon != blank -%}
-                              <i class="{{ block_stts.icon | strip }}"></i>
-                           {%- elsif block_stts.icons_op == '1' and block_stts.image != blank -%}
-                              {%- assign image = block_stts.image -%}
+                       <a href="{{ url_current }}"><span class="t4s-nav_link_txt t4s-d-flex t4s-align-items-center">
+  
+                        {%- if block_stts.icons_op == '2' and block_stts.icon != blank %}<i class="{{ block_stts.icon | strip }}"></i>
+                        {%- elsif block_stts.icons_op == '1' and block_stts.image != blank %}
+                               {%- assign image = block_stts.image -%}
                               <i class="t4s-d-inline-block t4s-pr">
                                  <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
                                  <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
-                              </i>
-                           {% endif -%}
-                           {{ tt_current }}
-                           {% if block_stts.lb != blank %}
-                              <span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>
-                           {% endif %}
-                        </a>
-                     </li>
-                  {%- endif -%}
-               {%- endcase -%}
-         {%- endfor -%}
-      {%- else -%}
-         <li><a href="/admin/themes/" style="font-size:10px;">Create your mobile categories menu sidebar and config from Section > Mobile Categories</a></li>
-      {%- endif -%}
+                               </i>
+                        {% endif -%}
+  
+                        {{ tt_current }}{% if block_stts.lb != blank %}<span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>{% endif %}</span><span class="t4s-mb-nav__icon"></span></a>
+                        <ul class="t4s-sub-menu t4s_ratioadapt t4s_cover t4s-cat_design_2">{{ get_sub_cat }}</ul>
+                    </li>
+                 {%- else -%}
+                     <li id="item_{{ block.id }}" class="t4s-menu-item t4s-item-level-0"><a href="{{ url_current }}">
+  
+                      {%- if block_stts.icons_op == '2' and block_stts.icon != blank %}<i class="{{ block_stts.icon | strip }}"></i>
+                      {%- elsif block_stts.icons_op == '1' and block_stts.image != blank %}
+                        {%- assign image = block_stts.image -%}
+                            <i class="t4s-d-inline-block t4s-pr">
+                                <img class="t4s-img_catk_mb lazyloadt4s" src="{% render 'img_svg', w: image.width, h: image.height %}" width="{{ image.width }}" height="{{ image.height }}" data-src="{{ image | image_url: width: img_size }}" alt="{{ image.alt | escape }}" loading="lazy">
+                                <span class="lazyloadt4s-loader is-bg-img" style="background: url({{ image | image_url: width: 1 }});"></span>
+                            </i>
+                        {% endif -%}
+  
+                      {{ tt_current }}{% if block_stts.lb != blank %}<span class="t4s-lb_nav_mb" style="background-color: {{ block_stts.lb_cl }}">{{ block_stts.lb }}</span>{% endif %}</a></li>
+                 {%- endif -%}
+              {%- endcase -%}
+        {%- endfor -%}
+     {%- else -%}
+     <li><a href="/admin/themes/" style="font-size:10px;">Create your mobile categories menu sidebar and config from Section > Mobile Categories</a></li>
+     {%- endif -%}
    </ul>
 {%- else -%}
-   <div data-section-id="{{ sid }}">
-      EJIAJRIERUI
-   </div>
+<div data-section-id="{{ sid }}"> 
+EJIAJRIERUI</div>
 {%- endif -%}
-
   
   {% schema %}
     {
