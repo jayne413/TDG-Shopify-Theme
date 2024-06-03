@@ -2549,6 +2549,22 @@
               "icons_op": "0",
               "icon": "las la-home"
             }
+          },
+          "cat_G8kUM6": {
+            "type": "cat",
+            "settings": {
+              "show_r": false,
+              "show_sw": false,
+              "show_w": true,
+              "cat": "decor-smart-rgb",
+              "title": "",
+              "url": "",
+              "menu": "decor-smart-rgb",
+              "lb": "",
+              "lb_cl": "#e91e63",
+              "icons_op": "0",
+              "icon": "las la-home"
+            }
           }
         },
         "block_order": [
@@ -2559,7 +2575,8 @@
           "cat_CEheMt",
           "cat_96cQtC",
           "cat_fiQbpb",
-          "cat_Y6bfab"
+          "cat_Y6bfab",
+          "cat_G8kUM6"
         ],
         "settings": {
         }
