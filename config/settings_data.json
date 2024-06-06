@@ -2380,6 +2380,23 @@
               "r_s_h_item": "20",
               "r_s_v_item": "30"
             }
+          },
+          "drop_mg3eJx": {
+            "type": "drop",
+            "settings": {
+              "title": "Test Dropdown",
+              "url": "shopify:\/\/collections\/animals-pre-order",
+              "open_link": "_self",
+              "menu": "",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
+            }
           }
         },
         "block_order": [
@@ -2390,7 +2407,8 @@
           "drop_EnG4WK",
           "drop_drLYV9",
           "drop_9BtKXU",
-          "mega_ie6NEH"
+          "mega_ie6NEH",
+          "drop_mg3eJx"
         ],
         "settings": {
           "layout": "logo_left",
