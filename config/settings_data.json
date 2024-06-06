@@ -2397,6 +2397,19 @@
               "pos_sub": "bottom",
               "pos": "left"
             }
+          },
+          "base_hg7ECn": {
+            "type": "base",
+            "settings": {
+              "title": "Base Test",
+              "url": "shopify:\/\/collections\/animals-pre-order",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": ""
+            }
           }
         },
         "block_order": [
@@ -2408,7 +2421,8 @@
           "drop_drLYV9",
           "drop_9BtKXU",
           "mega_ie6NEH",
-          "drop_mg3eJx"
+          "drop_mg3eJx",
+          "base_hg7ECn"
         ],
         "settings": {
           "layout": "logo_left",
