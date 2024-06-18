@@ -2414,6 +2414,32 @@
               "lb": "",
               "lb_cl": ""
             }
+          },
+          "base_h3LYYf": {
+            "type": "base",
+            "settings": {
+              "title": "Barcana",
+              "url": "https:\/\/www.barcana.com\/",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": ""
+            }
+          },
+          "base_mJg6ek": {
+            "type": "base",
+            "settings": {
+              "title": "Barcana Catalogs",
+              "url": "https:\/\/www.barcana.com\/barcana-catalogs",
+              "open_link": "_self",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": ""
+            }
           }
         },
         "block_order": [
@@ -2426,7 +2452,9 @@
           "drop_9BtKXU",
           "mega_ie6NEH",
           "drop_mg3eJx",
-          "base_hg7ECn"
+          "base_hg7ECn",
+          "base_h3LYYf",
+          "base_mJg6ek"
         ],
         "settings": {
           "layout": "logo_left",
