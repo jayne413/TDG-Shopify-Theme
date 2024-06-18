@@ -2417,6 +2417,7 @@
           },
           "base_h3LYYf": {
             "type": "base",
+            "disabled": true,
             "settings": {
               "title": "Barcana",
               "url": "https:\/\/www.barcana.com\/",
@@ -2430,6 +2431,7 @@
           },
           "base_mJg6ek": {
             "type": "base",
+            "disabled": true,
             "settings": {
               "title": "Barcana Catalogs",
               "url": "https:\/\/www.barcana.com\/barcana-catalogs",
@@ -2439,6 +2441,23 @@
               "cl": "#ec0101",
               "lb": "",
               "lb_cl": ""
+            }
+          },
+          "drop_jrUGng": {
+            "type": "drop",
+            "settings": {
+              "title": "Barcana",
+              "url": "",
+              "open_link": "_self",
+              "menu": "barcana",
+              "icon": "",
+              "cus_cl": false,
+              "cl": "#ec0101",
+              "lb": "",
+              "lb_cl": "",
+              "lazy_mn": true,
+              "pos_sub": "bottom",
+              "pos": "left"
             }
           }
         },
@@ -2454,7 +2473,8 @@
           "drop_mg3eJx",
           "base_hg7ECn",
           "base_h3LYYf",
-          "base_mJg6ek"
+          "base_mJg6ek",
+          "drop_jrUGng"
         ],
         "settings": {
           "layout": "logo_left",
